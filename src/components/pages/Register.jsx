@@ -1,26 +1,136 @@
-import React, {useState} from "react";
-import Login from './Login'
-export const Register = (props) =>{
+import React, {useState, useRef, useEffect} from "react";
+import {useNavigate } from 'react-router-dom'
+import '../../App.css'
+import './css/register.css'
+
+import CurrentUser from "../../model/CurrentUser";
+// var baseURL = 'https://localhost:8000/'
+var baseURL = 'https://c9b80c4b-4436-4358-8ab8-2bc97afbc640.mock.pstmn.io'
+
+var controller = '/register'
+var URL = baseURL + controller
+
+export function Register (props) {
+
+
     const [email, setEmail]= useState('');
-    const [pass, setPass]= useState('');
+    const [password, setPassword]= useState('');
+    const [confirmPassword, setConfirmPassword]= useState('');
     const [name, setName]= useState('');
-    
-    const handleSubmit=(e)=>{
+    const [phone, setPhone]= useState('');
+    const [address, setAddress]= useState('');
+    const [errMsg, setErrMsg] = useState('')
+
+    const emailRef = useRef()
+    const errRef = useRef()
+
+    const navigate = useNavigate()
+
+    useEffect( () => {
+        emailRef.current?.focus()
+    }, [])
+
+    useEffect( () => {
+        setErrMsg('')
+    }, [email, password])
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(email)
-             }
-    return(   
-        <div className="auth-form-container">
-                <form className="register-form" onSubmit={handleSubmit}>
-                    <label htmlFor="name">Full Name</label>
-                    <input value={name} name="name" id="name" placeholder="full name"/>
-                    <label htmlFor ="email">email</label>
-                    <input value={email} onChange={(e)=>setEmail(e.target.value)} type="email" placeholder="youremail@gmail.com" id="email" name="email"/>
-                    <label htmlFor="password">password</label>
-                    <input value={pass} onChange={(e)=>setPass(e.target.value)} type="password" placeholder="******" id="password" name="password"/>
-                    <button type="submit">Register</button>
-                </form>
-                <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Having an account? Login</button>
-        </div>
+        const role = 'user'
+        try{
+            const loginBody = {email, password, role, confirmPassword, name, phone, address}
+            let response = await fetch(URL, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(loginBody)
+            }).then(function(response){
+                return response.json();
+            }).then(function(myJson) {
+                return myJson
+            });
+            console.log(response)
+            if(response.status == "200"){
+                console.log("Befor saving: ", response)
+                navigate("/login")
+            }
+            else if(response.status == "404"){
+
+                setErrMsg(response.message)
+                console.log(response)
+                errRef.current.focus();
+            }
+            else if (!response) {
+                
+                setErrMsg('No Server Response');
+                console.log("No Server Response")
+                errRef.current.focus();
+            } 
+            else if (response.status == "400") {
+                setErrMsg(response.message);
+                errRef.current.focus();
+            } 
+            else if (response.status == "401") {
+                setErrMsg('Unauthorized');
+                console.log("Unauthorized")
+                errRef.current.focus();
+            } 
+        }
+        catch(err){
+            if (!err?.response) {
+                setErrMsg('No Server Response');
+            } else if (err.response?.status === 400) {
+                setErrMsg('Missing Username or Password');
+            } else if (err.response?.status === 401) {
+                setErrMsg('Unauthorized');
+            } else {
+                setErrMsg('Login Failed');
+            }
+            console.log("in catch")
+            errRef.current.focus();
+        }
+        
+    }
+    const handleLoginRedirect = () => {
+        navigate("/login")
+    }
+    return( 
+        <>
+                <section>
+                    <p ref = {errRef} className = { errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                        <div className="auth-form-container">
+                            <form className=".register-form" onSubmit={handleSubmit}>
+                                <div className="upper-input"> 
+                                    <div className="align-left">
+                                        <label htmlFor ="email">Email</label>
+                                        <input value={email} required onChange={(e) => setEmail(e.target.value)} type="email" placeholder="youremail@gmail.com" id="email" name="email"/>
+                                        <label htmlFor="password">Password</label>
+                                        <input value={password} required onChange={(e)=>setPassword(e.target.value)} type="password" placeholder="******" id="password" name="password"/>
+                                        <label htmlFor ="password">Confirm Password</label>
+                                        <input value={confirmPassword} required onChange={(e) => setConfirmPassword(e.target.value)} type="password" placeholder="******" id="confirmPassword" name="confirmPassword"/>
+                                    </div>
+                                
+                                    <div className="align-right">
+                                        <label htmlFor="text">Full Name</label>
+                                        <input value={name} required onChange={(e) => setName(e.target.value)} type="text"/>
+                                        <label htmlFor="text">Phone</label>
+                                        <input value={phone} required onChange={(e) => setPhone(e.target.value)} type="text"/>
+                                        <label htmlFor="text">Address</label>
+                                        <input value={address} required onChange={(e) => setAddress(e.target.value)} type="text"/>
+                                        
+                                    </div>
+                                </div>
+                                <div className="downward-input"> 
+                                    <button className="login-button btn-11" type="submit">Sign Up</button>
+                                </div>
+                            </form>
+                            <label className="register-label"> Already have an account? </label>
+                            <button className="login-button btn-7" onClick={handleLoginRedirect}> BACK TO LOGIN</button>
+                        </div>
+                </section>
+        </>
     )
 }

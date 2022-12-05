@@ -6,31 +6,43 @@ import Register from './Register'
 
 import CurrentUser from "../../model/CurrentUser";
 // var baseURL = 'https://localhost:8000/'
-var baseURL = 'https://8021dd70-a338-43c6-8e5b-94d311073bca.mock.pstmn.io'
+var baseURL = 'https://c9b80c4b-4436-4358-8ab8-2bc97afbc640.mock.pstmn.io'
 var controller = '/login'
 var URL = baseURL + controller
 
-export const Login = (props) => {
-
+export function Login (props) {
 
     const [email, setEmail]= useState('');
     const [password, setPassword]= useState('');
     const [errMsg, setErrMsg] = useState('')
     const [success, setSuccess] = useState(false);
-
+    // const [userInfo, setUserInfo] = useState('');
     const emailRef = useRef()
     const errRef = useRef()
 
     const navigate = useNavigate()
 
+    // let response = sessionStorage.getItem("user-info")
+    // console.log("After getting: ", JSON.parse(response))
+    // let userInfo = new CurrentUser()
+    // userInfo.parse(JSON.parse(response))
+
     useEffect( () => {
-        emailRef.current?.focus()
+        // emailRef.current?.focus()
     }, [])
+
 
     useEffect( () => {
         setErrMsg('')
     }, [email, password])
 
+    // useEffect(() => {
+    //     if(response){
+    //         navigate("/")
+    //     }
+    // }, [response])
+
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         const role = 'user'
@@ -52,14 +64,8 @@ export const Login = (props) => {
             if(response.status == "200"){
                 console.log("Befor saving: ", response.body)
                 sessionStorage.setItem("currentUser", JSON.stringify(response.body))
-    
-                response = sessionStorage.getItem("currentUser")
-                console.log("After getting: ", JSON.parse(response))
-                let testUser = new CurrentUser()
-                testUser.parse(JSON.parse(response))
-                console.log(testUser)
                 
-                setSuccess(true)
+                setSuccess(true)    
                 navigate("/")
             }
             else if(response.status == "404"){
@@ -87,9 +93,9 @@ export const Login = (props) => {
         catch(err){
             if (!err?.response) {
                 setErrMsg('No Server Response');
-            } else if (err.response?.status == 400) {
+            } else if (err.response?.status === 400) {
                 setErrMsg('Missing Username or Password');
-            } else if (err.response?.status == 401) {
+            } else if (err.response?.status === 401) {
                 setErrMsg('Unauthorized');
             } else {
                 setErrMsg('Login Failed');
@@ -99,9 +105,12 @@ export const Login = (props) => {
         }
         
     }
+
     const handleRegisterRedirect = () => {
+        console.log("register clicked")
         navigate("/register")
     }
+
     return( 
         <>
                 <section>
@@ -115,7 +124,7 @@ export const Login = (props) => {
                                 <button className="login-button btn-11" type="submit">Log In</button>
                             </form>
                             <label className="register-label"> Don't have an account? </label>
-                            <button className="login-button btn-7" onClick={handleRegisterRedirect()}> Register</button>
+                            <button className="login-button btn-7" onClick={handleRegisterRedirect}> Register</button>
                         </div>
                 </section>
         </>
