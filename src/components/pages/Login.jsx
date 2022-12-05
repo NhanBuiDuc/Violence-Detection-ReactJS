@@ -1,27 +1,123 @@
-import React, {useState} from "react";
+import React, {useState, useRef, useEffect} from "react";
+import {useNavigate } from 'react-router-dom'
 import '../../App.css'
+import './css/login.css'
+import Register from './Register'
 
-export const Login = (props) =>{
+import CurrentUser from "../../model/CurrentUser";
+// var baseURL = 'https://localhost:8000/'
+var baseURL = 'https://8021dd70-a338-43c6-8e5b-94d311073bca.mock.pstmn.io'
+var controller = '/login'
+var URL = baseURL + controller
+
+export const Login = (props) => {
+
+
     const [email, setEmail]= useState('');
-    const [pass, setPass]= useState('');
+    const [password, setPassword]= useState('');
+    const [errMsg, setErrMsg] = useState('')
+    const [success, setSuccess] = useState(false);
 
-    const handleSubmit=(e)=>{
+    const emailRef = useRef()
+    const errRef = useRef()
+
+    const navigate = useNavigate()
+
+    useEffect( () => {
+        emailRef.current?.focus()
+    }, [])
+
+    useEffect( () => {
+        setErrMsg('')
+    }, [email, password])
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(email)
+        const role = 'user'
+        try{
+            const loginBody = {email, password, role}
+            let response = await fetch(URL, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(loginBody)
+            }).then(function(response){
+                return response.json();
+            }).then(function(myJson) {
+                return myJson
+            });
+    
+            if(response.status == "200"){
+                console.log("Befor saving: ", response.body)
+                sessionStorage.setItem("currentUser", JSON.stringify(response.body))
+    
+                response = sessionStorage.getItem("currentUser")
+                console.log("After getting: ", JSON.parse(response))
+                let testUser = new CurrentUser()
+                testUser.parse(JSON.parse(response))
+                console.log(testUser)
+                
+                setSuccess(true)
+                navigate("/")
+            }
+            else if(response.status == "404"){
+                setErrMsg(response.message)
+                console.log(response.message)
+                errRef.current.focus();
+            }
+            else if (!response) {
+                
+                setErrMsg('No Server Response');
+                console.log("No Server Response")
+                errRef.current.focus();
+            } 
+            else if (response.status == 400) {
+                setErrMsg('Missing Username or Password');
+                console.log("Missing Username or Password")
+                errRef.current.focus();
+            } 
+            else if (response.status == 401) {
+                setErrMsg('Unauthorized');
+                console.log("Unauthorized")
+                errRef.current.focus();
+            } 
+        }
+        catch(err){
+            if (!err?.response) {
+                setErrMsg('No Server Response');
+            } else if (err.response?.status == 400) {
+                setErrMsg('Missing Username or Password');
+            } else if (err.response?.status == 401) {
+                setErrMsg('Unauthorized');
+            } else {
+                setErrMsg('Login Failed');
+            }
+            console.log("in catch")
+            errRef.current.focus();
+        }
+        
     }
-    let a = "Long cho dien";
-
-    return(
-        <div className="auth-form-container">
-                <form className="login-form" onSubmit={handleSubmit}>
-                    <label htmlFor ="email">email</label>
-                    <input value={email} onChange={(e)=>setEmail(e.target.value)} type="email" placeholder="youremail@gmail.com" id="email" name="email"/>
-                    <label htmlFor="password">password</label>
-                    <input value={pass} onChange={(e)=>setPass(e.target.value)} type="password" placeholder="******" id="password" name="password"/>
-                    <button type="submit">Log In</button>
-                </form>
-                <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register</button>
-                <p>{a}</p>
-        </div>
+    const handleRegisterRedirect = () => {
+        navigate("/register")
+    }
+    return( 
+        <>
+                <section>
+                    <p ref = {errRef} className = { errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                        <div className="auth-form-container">
+                            <form className="login-form" onSubmit={handleSubmit}>
+                                <label htmlFor ="email">Email</label>
+                                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="youremail@gmail.com" id="email" name="email"/>
+                                <label htmlFor="password">Password</label>
+                                <input value={password} onChange={(e)=>setPassword(e.target.value)} type="password" placeholder="******" id="password" name="password"/>
+                                <button className="login-button btn-11" type="submit">Log In</button>
+                            </form>
+                            <label className="register-label"> Don't have an account? </label>
+                            <button className="login-button btn-7" onClick={handleRegisterRedirect()}> Register</button>
+                        </div>
+                </section>
+        </>
     )
 }
