@@ -47,6 +47,7 @@ export function Login (props) {
         e.preventDefault();
         const role = 'user'
         try{
+
             const loginBody = {email, password, role}
             let response = await fetch(URL, {
                 method: 'POST',

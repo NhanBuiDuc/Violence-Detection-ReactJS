@@ -39,45 +39,54 @@ export function Register (props) {
         e.preventDefault();
         const role = 'user'
         try{
-            const loginBody = {email, password, role, confirmPassword, name, phone, address}
-            let response = await fetch(URL, {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(loginBody)
-            }).then(function(response){
-                return response.json();
-            }).then(function(myJson) {
-                return myJson
-            });
-            console.log(response)
-            if(response.status == "200"){
-                console.log("Befor saving: ", response)
-                navigate("/login")
-            }
-            else if(response.status == "404"){
 
-                setErrMsg(response.message)
-                console.log(response)
+            if( password != confirmPassword){
+                setErrMsg("Two password don't match")
+
                 errRef.current.focus();
             }
-            else if (!response) {
-                
-                setErrMsg('No Server Response');
-                console.log("No Server Response")
-                errRef.current.focus();
-            } 
-            else if (response.status == "400") {
-                setErrMsg(response.message);
-                errRef.current.focus();
-            } 
-            else if (response.status == "401") {
-                setErrMsg('Unauthorized');
-                console.log("Unauthorized")
-                errRef.current.focus();
-            } 
+            else{
+                const loginBody = {email, password, role, confirmPassword, name, phone, address}
+                let response = await fetch(URL, {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json",
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(loginBody)
+                }).then(function(response){
+                    return response.json();
+                }).then(function(myJson) {
+                    return myJson
+                });
+                console.log(response)
+                if(response.status == "200"){
+                    console.log("Befor saving: ", response)
+                    navigate("/login")
+                }
+                else if(response.status == "404"){
+    
+                    setErrMsg(response.message)
+                    console.log(response)
+                    errRef.current.focus();
+                }
+                else if (!response) {
+                    
+                    setErrMsg('No Server Response');
+                    console.log("No Server Response")
+                    errRef.current.focus();
+                } 
+                else if (response.status == "400") {
+                    setErrMsg(response.message);
+                    errRef.current.focus();
+                } 
+                else if (response.status == "401") {
+                    setErrMsg('Unauthorized');
+                    console.log("Unauthorized")
+                    errRef.current.focus();
+                } 
+            }
+
         }
         catch(err){
             if (!err?.response) {
