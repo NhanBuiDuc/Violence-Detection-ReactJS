@@ -6,6 +6,9 @@ import Footer from '../Footer';
 
 
 function Home() {
+  currentUser = new CurrentUser()
+  console.log(currentUser)
+  
   return (
     <>
       <HeroSection />
