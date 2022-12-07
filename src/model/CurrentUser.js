@@ -1,5 +1,3 @@
-import e from "express";
-
 export default class CurrentUser {
     constructor(account_id, email, role, name, phone, address) {
       this.account_id = account_id;
@@ -17,7 +15,8 @@ export default class CurrentUser {
     }
 
     parse() {
-        object = sessionStorage.getItem("user-info")
+        let object = JSON.parse(sessionStorage.getItem("currentUser"))
+        console.log("Parse: ", object)
         if(object != null){
             this.account_id = object.account_id
             this.email = object.email
@@ -26,6 +25,9 @@ export default class CurrentUser {
             this.phone = object.phone
             this.address = object.address
             this.loggedIn = true
+        }
+        else{
+            this.loggedIn = false
         }
         
     }

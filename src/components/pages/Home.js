@@ -3,10 +3,10 @@ import '../../App.css';
 import HeroSection from '../HeroSection';
 import Cards from '../Cards';
 import Footer from '../Footer';
-
+import CurrentUser from "../../model/CurrentUser";
 
 function Home() {
-  currentUser = new CurrentUser()
+  let currentUser = new CurrentUser()
   console.log(currentUser)
   
   return (

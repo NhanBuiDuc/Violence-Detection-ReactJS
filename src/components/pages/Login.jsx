@@ -127,7 +127,6 @@ export function Login (props) {
                             <label className="register-label"> Don't have an account? </label>
                             <button className="login-button btn-7" onClick={handleRegisterRedirect}> Register</button>
                         </div>
-                        <PaypalSection></PaypalSection>
                 </section>
         </>
     )
