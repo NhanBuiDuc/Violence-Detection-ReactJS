@@ -5,10 +5,9 @@ import './css/login.css'
 import Register from './Register'
 import PaypalSection from '../PaypalSection'
 import CurrentUser from "../../model/CurrentUser";
+import Account from "../../model/Account";
 // var baseURL = 'https://localhost:8000/'
-var baseURL = 'https://c9b80c4b-4436-4358-8ab8-2bc97afbc640.mock.pstmn.io'
-var controller = '/login'
-var URL = baseURL + controller
+
 
 export function Login (props) {
 
@@ -45,66 +44,35 @@ export function Login (props) {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const role = 'user'
-        try{
-
-            const loginBody = {email, password, role}
-            let response = await fetch(URL, {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(loginBody)
-            }).then(function(response){
-                return response.json();
-            }).then(function(myJson) {
-                return myJson
-            });
-    
-            if(response.status == "200"){
-                console.log("Befor saving: ", response.body)
-                sessionStorage.setItem("currentUser", JSON.stringify(response.body))
-                
-                setSuccess(true)    
-                navigate("/")
-            }
-            else if(response.status == "404"){
-                setErrMsg(response.message)
-                console.log(response.message)
-                errRef.current.focus();
-            }
-            else if (!response) {
-                
-                setErrMsg('No Server Response');
-                console.log("No Server Response")
-                errRef.current.focus();
-            } 
-            else if (response.status == 400) {
-                setErrMsg('Missing Username or Password');
-                console.log("Missing Username or Password")
-                errRef.current.focus();
-            } 
-            else if (response.status == 401) {
-                setErrMsg('Unauthorized');
-                console.log("Unauthorized")
-                errRef.current.focus();
-            } 
+        console.log("press login")
+        let response = Account.login(email, password)
+        if(response.status == "200"){
+            console.log("Befor saving: ", response.body)
+            Account.setUserSession() 
+            setSuccess(true)    
+            navigate("/")
         }
-        catch(err){
-            if (!err?.response) {
-                setErrMsg('No Server Response');
-            } else if (err.response?.status === 400) {
-                setErrMsg('Missing Username or Password');
-            } else if (err.response?.status === 401) {
-                setErrMsg('Unauthorized');
-            } else {
-                setErrMsg('Login Failed');
-            }
-            console.log("in catch")
+        else if(response.status == "404"){
+            setErrMsg(response.message)
+            console.log(response.message)
             errRef.current.focus();
         }
-        
+        else if (!response) {
+            
+            setErrMsg('No Server Response');
+            console.log("No Server Response")
+            errRef.current.focus();
+        } 
+        else if (response.status == 400) {
+            setErrMsg('Missing Username or Password');
+            console.log("Missing Username or Password")
+            errRef.current.focus();
+        } 
+        else if (response.status == 401) {
+            setErrMsg('Unauthorized');
+            console.log("Unauthorized")
+            errRef.current.focus();
+        }
     }
 
     const handleRegisterRedirect = () => {

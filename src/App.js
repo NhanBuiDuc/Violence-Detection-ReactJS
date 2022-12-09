@@ -11,6 +11,7 @@ import Test from './components/pages/Test';
 import { Register } from './components/pages/Register';
 
 function App() {
+
   return (
     <>
       <Router>
