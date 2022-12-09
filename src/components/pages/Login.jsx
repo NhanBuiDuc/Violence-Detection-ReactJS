@@ -3,7 +3,7 @@ import {useNavigate } from 'react-router-dom'
 import '../../App.css'
 import './css/login.css'
 import Register from './Register'
-
+import PaypalSection from '../PaypalSection'
 import CurrentUser from "../../model/CurrentUser";
 // var baseURL = 'https://localhost:8000/'
 var baseURL = 'https://c9b80c4b-4436-4358-8ab8-2bc97afbc640.mock.pstmn.io'
@@ -127,6 +127,7 @@ export function Login (props) {
                             <label className="register-label"> Don't have an account? </label>
                             <button className="login-button btn-7" onClick={handleRegisterRedirect}> Register</button>
                         </div>
+                        <PaypalSection></PaypalSection>
                 </section>
         </>
     )
