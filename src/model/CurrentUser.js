@@ -16,7 +16,7 @@ export default class CurrentUser {
 
     parse() {
         let object = JSON.parse(sessionStorage.getItem("currentUser"))[0]
-        console.log("In CurrentUse, Parse: ", object)
+        console.log("In CurrentUser, Parse: ", object)
         if(object != null){
             this.account_id = object.account_id
             this.email = object.email
@@ -25,7 +25,6 @@ export default class CurrentUser {
             this.phone = object.phone
             this.address = object.address
             this.loggedIn = true
-            console.log(object.account_id)
         }
         else{
             this.loggedIn = false

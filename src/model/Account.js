@@ -42,12 +42,12 @@ export default class Account {
             let headers = new Headers();
             headers.append('Content-Type', 'application/json');
 
-            const loginBody = {email, password, name, phone, address}
+            const requestBody = {email, password, name, phone, address}
             let response = await fetch(myURL, {
                 mode: 'cors',
                 method: 'POST',
                 headers: headers,
-                body: JSON.stringify(loginBody)
+                body: JSON.stringify(requestBody)
             }).then(function(response){
                 return response.json();
             }).then(function(myJson) {

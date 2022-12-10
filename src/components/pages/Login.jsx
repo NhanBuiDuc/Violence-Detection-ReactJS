@@ -6,6 +6,7 @@ import Register from './Register'
 import PaypalSection from '../PaypalSection'
 import CurrentUser from "../../model/CurrentUser";
 import Account from "../../model/Account";
+import Contact from "../../model/Contact";
 // var baseURL = 'https://localhost:8000/'
 
 
@@ -78,9 +79,12 @@ export default function Login (props) {
         console.log("register clicked")
         navigate("/register")
     }
-    const handleLogOutRedirect = () => {
-        Account.logOut()
+    const handleLogOutRedirect = async () => {
+        let currentUser = new CurrentUser()
+        let response = await Contact.getByAcountId(currentUser.account_id)
+        console.log("In Login Contact", response)
     }
+
     return( 
         <>
                 <section>
