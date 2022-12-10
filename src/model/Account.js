@@ -1,10 +1,10 @@
 const baseURL = 'https://violence-detection-backend.vercel.app'
 export default class Account {
 
-
     static login = async (email, password) => {
         try{
             let action = '/login'
+            let json = "null"
             URL = baseURL + action
             let headers = new Headers();
             headers.append('Content-Type', 'application/json');
@@ -19,10 +19,12 @@ export default class Account {
             }).then(function(myJson) {
                 return myJson
             });
-            if(response != null){
-                this.status = response.status
-                this.message = response.message
-                this.body = response.body
+            console.log("In Account, resonse = ", response)
+            json = response
+            console.log("In Account, json = ", json)
+            if(json.status === "200"){
+                console.log("In Acount, in if")
+                Account.setUserSession(json) 
             }
             return response
         }
@@ -31,11 +33,13 @@ export default class Account {
             return null
         }
     }
-    setUserSession(){
-        if(this.body != null){
-            sessionStorage.setItem("currentUser", JSON.stringify(this.body))
+    static setUserSession(json){
+        if(json != null){
+            console.log("In Set session ", json)
+            sessionStorage.setItem("currentUser", JSON.stringify(json.body))
         }
         else{
+            console.log("In Set session ",this.body)
             console.log("No account logged in")
         }
     }

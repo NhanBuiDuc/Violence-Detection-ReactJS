@@ -45,12 +45,10 @@ export function Login (props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("press login")
-        let response = Account.login(email, password)
+        let response = await Account.login(email, password)
+        console.log("In login: ", response)
         if(response.status == "200"){
-            console.log("Befor saving: ", response.body)
-            Account.setUserSession() 
-            setSuccess(true)    
-            navigate("/")
+            navigate("/Services")
         }
         else if(response.status == "404"){
             setErrMsg(response.message)
