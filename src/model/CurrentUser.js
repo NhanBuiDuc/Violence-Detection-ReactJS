@@ -32,5 +32,14 @@ export default class CurrentUser {
         }
         
     }
+    static isLoggedIn(){
+        let object = JSON.parse(sessionStorage.getItem("currentUser"))[0]
+        if(object != null){
+            return false
+        }
+        else {
+            return true
+        }
+    }
 
 }
