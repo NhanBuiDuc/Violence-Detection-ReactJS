@@ -6,8 +6,8 @@ import Footer from '../Footer';
 import CurrentUser from "../../model/CurrentUser";
 
 function Home() {
-  let currentUser = new CurrentUser()
-  console.log(currentUser)
+  // let currentUser = new CurrentUser()
+  // console.log(currentUser)
   
   return (
     <>

@@ -18,7 +18,8 @@ export function Login (props) {
     // const [userInfo, setUserInfo] = useState('');
     const emailRef = useRef()
     const errRef = useRef()
-
+    // const homepageURL = new URL('http://localhost:3000/');
+    // const myHomepageUrlString = homepageURL.toString();
     const navigate = useNavigate()
 
     // let response = sessionStorage.getItem("user-info")
@@ -48,7 +49,7 @@ export function Login (props) {
         let response = await Account.login(email, password)
         console.log("In login: ", response)
         if(response.status == "200"){
-            navigate("/Services")
+            navigate('/')
         }
         else if(response.status == "404"){
             setErrMsg(response.message)
@@ -61,12 +62,12 @@ export function Login (props) {
             console.log("No Server Response")
             errRef.current.focus();
         } 
-        else if (response.status == 400) {
+        else if (response.status === "400") {
             setErrMsg('Missing Username or Password');
             console.log("Missing Username or Password")
             errRef.current.focus();
         } 
-        else if (response.status == 401) {
+        else if (response.status === "401") {
             setErrMsg('Unauthorized');
             console.log("Unauthorized")
             errRef.current.focus();
