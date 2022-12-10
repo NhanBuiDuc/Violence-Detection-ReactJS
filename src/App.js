@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import './App.css';
 import Home from './components/pages/Home';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Login } from './components/pages/Login';
+import Login from './components/pages/Login';
 import Cameras from './components/pages/Cameras';
 import Services from './components/pages/Services';
 

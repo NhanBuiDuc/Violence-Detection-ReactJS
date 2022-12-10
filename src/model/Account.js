@@ -5,11 +5,11 @@ export default class Account {
         try{
             let action = '/login'
             let json = "null"
-            URL = baseURL + action
+            let myURL = baseURL + action
             let headers = new Headers();
             headers.append('Content-Type', 'application/json');
             const loginBody = {email, password}
-            let response = await fetch(URL, {
+            let response = await fetch(myURL, {
                 mode: 'cors',
                 method: 'POST',
                 headers: headers,
@@ -33,6 +33,35 @@ export default class Account {
             return null
         }
     }
+    static register = async (email, password, name, phone, address) => {
+        try{
+            let action = '/register'
+            let json = "null"
+            let myURL = baseURL + action
+
+            let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+
+            const loginBody = {email, password, name, phone, address}
+            let response = await fetch(myURL, {
+                mode: 'cors',
+                method: 'POST',
+                headers: headers,
+                body: JSON.stringify(loginBody)
+            }).then(function(response){
+                return response.json();
+            }).then(function(myJson) {
+                return myJson
+            });
+            console.log("In Account Register, resonse = ", response)
+            return response
+        }
+        catch(err){
+
+            return null
+        }
+    }
+
     static setUserSession(json){
         if(json != null){
             console.log("In Set session ", json)
@@ -42,5 +71,8 @@ export default class Account {
             console.log("In Set session ",this.body)
             console.log("No account logged in")
         }
+    }
+    static logOut(){
+        sessionStorage.removeItem('currentUser');
     }
 }

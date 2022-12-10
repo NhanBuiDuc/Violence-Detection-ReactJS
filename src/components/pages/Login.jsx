@@ -9,7 +9,7 @@ import Account from "../../model/Account";
 // var baseURL = 'https://localhost:8000/'
 
 
-export function Login (props) {
+export default function Login (props) {
 
     const [email, setEmail]= useState('');
     const [password, setPassword]= useState('');
@@ -49,7 +49,7 @@ export function Login (props) {
         let response = await Account.login(email, password)
         console.log("In login: ", response)
         if(response.status == "200"){
-            navigate('/')
+            navigate("/")
         }
         else if(response.status == "404"){
             setErrMsg(response.message)
@@ -78,7 +78,9 @@ export function Login (props) {
         console.log("register clicked")
         navigate("/register")
     }
-
+    const handleLogOutRedirect = () => {
+        Account.logOut()
+    }
     return( 
         <>
                 <section>
@@ -93,8 +95,9 @@ export function Login (props) {
                             </form>
                             <label className="register-label"> Don't have an account? </label>
                             <button className="login-button btn-7" onClick={handleRegisterRedirect}> Register</button>
+                            <button className="login-button btn-7" onClick={handleLogOutRedirect}> Log Out</button>
                         </div>
-                        <PaypalSection></PaypalSection>
+                        
                 </section>
         </>
     )
