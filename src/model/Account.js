@@ -75,4 +75,32 @@ export default class Account {
     static logOut(){
         sessionStorage.removeItem('currentUser');
     }
+    static update = async (account_id, email, password, name, phone, address) => {
+        try{
+            let action = '/users'
+            let json = "PUT"
+            let myURL = baseURL + action
+
+            let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+
+            const requestBody = {email, password, name, phone, address}
+            let response = await fetch(myURL, {
+                mode: 'cors',
+                method: 'POST',
+                headers: headers,
+                body: JSON.stringify(requestBody)
+            }).then(function(response){
+                return response.json();
+            }).then(function(myJson) {
+                return myJson
+            });
+            console.log("In Account Update, resonse = ", response)
+            return response
+        }
+        catch(err){
+
+            return null
+        }
+    }
 }

@@ -7,6 +7,7 @@ import PaypalSection from '../PaypalSection'
 import CurrentUser from "../../model/CurrentUser";
 import Account from "../../model/Account";
 import Contact from "../../model/Contact";
+import Service from "../../model/Service";
 // var baseURL = 'https://localhost:8000/'
 
 
@@ -52,7 +53,7 @@ export default function Login (props) {
         if(response.status == "200"){
             navigate("/")
         }
-        else if(response.status == "404"){
+        else if(response.status === "404"){
             setErrMsg(response.message)
             console.log(response.message)
             errRef.current.focus();
@@ -80,9 +81,8 @@ export default function Login (props) {
         navigate("/register")
     }
     const handleLogOutRedirect = async () => {
-        let currentUser = new CurrentUser()
-        let response = await Contact.getByAcountId(currentUser.account_id)
-        console.log("In Login Contact", response)
+        resonse = await Service.getServiceList()
+        console.log("Resonse in login", resonse)
     }
 
     return( 
