@@ -81,8 +81,8 @@ export default function Login (props) {
         navigate("/register")
     }
     const handleLogOutRedirect = async () => {
-        resonse = await Service.getServiceList()
-        console.log("Resonse in login", resonse)
+        let response = await Service.getServiceList()
+        console.log("Resonse in login", response)
     }
 
     return( 

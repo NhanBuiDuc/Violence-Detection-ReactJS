@@ -19,4 +19,22 @@ export default class Service {
             console.log("In Service, resonse = ", response)
             return response
     }
+    static async getAllCamerasOfService(service_id){
+        let action = '/service_camera/service'
+        let json = "null"
+        let myURL = baseURL + action
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        let response = await fetch(myURL, {
+            mode: 'cors',
+            method: 'GET',
+            headers: headers
+        }).then(function(response){
+            return response.json();
+        }).then(function(myJson) {
+            return myJson
+        });
+        console.log("In Service, resonse = ", response)
+        return response
+    }
 }
