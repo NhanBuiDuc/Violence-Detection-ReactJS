@@ -4,6 +4,7 @@ import {
     PayPalButtons,
     usePayPalScriptReducer
 } from "@paypal/react-paypal-js";
+import Subcription from "../model/Subcription";
 
 var baseURL = 'https://violence-detection-backend.vercel.app'
 var controller = '/orders'
@@ -15,67 +16,8 @@ const currency = "USD";
 const style = {"layout":"vertical"};
 
 const transactionSuccessful = async (data) => {
-    // Notification for back-end the transaction were success
-    // try{
-
-    //     const loginBody = {email, password, role}
-    //     let response = await fetch(URL, {
-    //         method: 'POST',
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             'Accept': 'application/json'
-    //         },
-    //         body: JSON.stringify(loginBody)
-    //     }).then(function(response){
-    //         return response.json();
-    //     }).then(function(myJson) {
-    //         return myJson
-    //     });
-
-    //     if(response.status == "200"){
-    //         console.log("Befor saving: ", response.body)
-    //         sessionStorage.setItem("currentUser", JSON.stringify(response.body))
-            
-    //         setSuccess(true)    
-    //         navigate("/")
-    //     }
-    //     else if(response.status == "404"){
-    //         setErrMsg(response.message)
-    //         console.log(response.message)
-    //         errRef.current.focus();
-    //     }
-    //     else if (!response) {
-            
-    //         setErrMsg('No Server Response');
-    //         console.log("No Server Response")
-    //         errRef.current.focus();
-    //     } 
-    //     else if (response.status == 400) {
-    //         setErrMsg('Missing Username or Password');
-    //         console.log("Missing Username or Password")
-    //         errRef.current.focus();
-    //     } 
-    //     else if (response.status == 401) {
-    //         setErrMsg('Unauthorized');
-    //         console.log("Unauthorized")
-    //         errRef.current.focus();
-    //     } 
-    // }
-    // catch(err){
-    //     if (!err?.response) {
-    //         setErrMsg('No Server Response');
-    //     } else if (err.response?.status === 400) {
-    //         setErrMsg('Missing Username or Password');
-    //     } else if (err.response?.status === 401) {
-    //         setErrMsg('Unauthorized');
-    //     } else {
-    //         setErrMsg('Login Failed');
-    //     }
-    //     console.log("in catch")
-    //     errRef.current.focus();
-    // }
-    // => send data to order and order-service table
-    // => Redirect to profile page
+    let response = await Subcription.createSubcription(51,1)
+    console.log("Resonse in login", response)
 }
 // Custom component to wrap the PayPalButtons and handle currency changes
 const ButtonWrapper = ({ currency, showSpinner }) => {
