@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/pages/Login';
 import Cameras from './components/pages/Cameras';
 import Services from './components/pages/Services';
-
+import Profile from './components/pages/Profile';
 import Test from './components/pages/Test';
 import { Register } from './components/pages/Register';
 
@@ -23,6 +23,7 @@ function App() {
           <Route path='/Cameras' exact element={<Cameras/>} />
           <Route path='/Services' exact element={<Services/>} />
           <Route path='/test' exact element={<Test/>} />
+          <Route path='/profile' exact element={<Profile/>} />
         </Routes>
       </Router>
     </>
