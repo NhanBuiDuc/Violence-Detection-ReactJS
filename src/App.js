@@ -9,6 +9,7 @@ import Services from './components/pages/Services';
 import Profile from './components/pages/Profile';
 import Test from './components/pages/Test';
 import { Register } from './components/pages/Register';
+import { UpdateProfile } from './components/UpdateProfile';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route path='/Services' exact element={<Services/>} />
           <Route path='/test' exact element={<Test/>} />
           <Route path='/profile' exact element={<Profile/>} />
+          <Route path='/update' exact element={<UpdateProfile/>} />
         </Routes>
       </Router>
     </>
