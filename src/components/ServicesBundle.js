@@ -7,7 +7,13 @@ import PaypalSection from './PaypalSection'
 
 
 
+import CurrentUser from '../model/CurrentUser'
+
 function ServicesBundle() {
+
+  var currentUser = new CurrentUser()
+
+
   return (
     <div className='services-container' >
       <div className='services-header' >
@@ -107,6 +113,6 @@ function ServicesBundle() {
           </div>
       </div>
     </div>
-)
+  )
   }
 export default ServicesBundle

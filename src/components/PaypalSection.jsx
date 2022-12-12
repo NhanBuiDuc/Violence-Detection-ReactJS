@@ -90,6 +90,7 @@ export default function PaypalSection(props) {
                     amount={props.amount}
                 />
 			</PayPalScriptProvider>
+            <p>{props.amount}</p>
 		</div>
 	);
 }

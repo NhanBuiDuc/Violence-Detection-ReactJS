@@ -97,6 +97,7 @@ export function Register (props) {
     }
     const handleSignUp=()=>{
         alert("Account has been created")
+        navigate("/login")
     }
     return( 
         <>
