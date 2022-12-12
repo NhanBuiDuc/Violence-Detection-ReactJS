@@ -1,12 +1,13 @@
 import React from 'react';
-
+import './css/streaming.css'
 function Streaming() {
     return (
-    <div>
-        <h1>Result</h1>
-        <img src="{{ url_for('video_feed') }}" alt='NO SIGNAL'></img>
-    </div>
-    );
+        <div className="App">
+          <header className="App-header">
+            <img src={'/video_feed'} className="App-logo" alt="logo" />
+          </header>
+        </div>
+      );
   }
   
   export default Streaming;
