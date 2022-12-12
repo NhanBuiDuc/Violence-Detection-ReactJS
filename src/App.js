@@ -7,9 +7,10 @@ import Login from './components/pages/Login';
 import Cameras from './components/pages/Cameras';
 import Services from './components/pages/Services';
 import Profile from './components/pages/Profile';
-import Test from './components/pages/Test';
+import Form from './components/pages/Test';
 import { Register } from './components/pages/Register';
 import Streaming from './components/pages/Streaming';
+import { UpdateProfile } from './components/UpdateProfile';
 function App() {
 
   return (
@@ -22,9 +23,10 @@ function App() {
           <Route path='/Register' exact element = {<Register/>} />
           <Route path='/Cameras' exact element={<Cameras/>} />
           <Route path='/Services' exact element={<Services/>} />
-          <Route path='/test' exact element={<Test/>} />
+          <Route path='/test' exact element={<Form/>} />
           <Route path='/profile' exact element={<Profile/>} />
           <Route path='/stream' exact element={<Streaming/>} />
+          {/* <Route path='/update' exact element={<UpdateProfile/>} /> */}
         </Routes>
       </Router>
     </>

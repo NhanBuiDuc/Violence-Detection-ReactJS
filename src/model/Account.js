@@ -75,19 +75,19 @@ export default class Account {
     static logOut(){
         sessionStorage.removeItem('currentUser');
     }
-    static update = async (account_id, email, password, name, phone, address) => {
+    static update = async (account_id, name, phone, address) => {
         try{
-            let action = '/users'
+            let action = '/users/'
             let json = "PUT"
             let myURL = baseURL + action
 
             let headers = new Headers();
             headers.append('Content-Type', 'application/json');
 
-            const requestBody = {email, password, name, phone, address}
+            const requestBody = {account_id, name, phone, address}
             let response = await fetch(myURL, {
                 mode: 'cors',
-                method: 'POST',
+                method: 'PUT',
                 headers: headers,
                 body: JSON.stringify(requestBody)
             }).then(function(response){
