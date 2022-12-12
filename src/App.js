@@ -9,7 +9,7 @@ import Services from './components/pages/Services';
 
 import Test from './components/pages/Test';
 import { Register } from './components/pages/Register';
-
+import Streaming from './components/pages/Streaming';
 function App() {
 
   return (
@@ -23,6 +23,7 @@ function App() {
           <Route path='/Cameras' exact element={<Cameras/>} />
           <Route path='/Services' exact element={<Services/>} />
           <Route path='/test' exact element={<Test/>} />
+          <Route path='/stream' exact element={<Streaming/>} />
         </Routes>
       </Router>
     </>

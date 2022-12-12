@@ -100,7 +100,7 @@ export default function Login (props) {
                             <button className="login-button btn-7" onClick={handleRegisterRedirect}> Register</button>
                             <button className="login-button btn-7" onClick={handleLogOutRedirect}> Log Out</button>
                         </div>
-                        <PaypalSection></PaypalSection>
+                        <PaypalSection amount="20"></PaypalSection>
                 </section>
         </>
     )
