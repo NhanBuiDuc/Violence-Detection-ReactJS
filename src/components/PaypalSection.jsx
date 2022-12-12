@@ -75,7 +75,7 @@ const ButtonWrapper = ({ currency, showSpinner, amount }) => {
 }
 
 export default function PaypalSection(props) {
-	return (
+    return (
 		<div style={{ maxWidth: "750px", minHeight: "200px" }}>
             <PayPalScriptProvider
                 options={{
@@ -87,7 +87,7 @@ export default function PaypalSection(props) {
 				<ButtonWrapper
                     currency={currency}
                     showSpinner={false}
-                    amount={props.amount} 
+                    amount={props.amount}
                 />
 			</PayPalScriptProvider>
             <p>{props.amount}</p>

@@ -21,7 +21,7 @@ function Navbar() {
         showButton();
     }, [])
     window.addEventListener('resize', showButton);
-    
+
 return (
     <>
         <nav className='navbar'>
@@ -55,7 +55,7 @@ return (
                         </Link>
                     </li>
                 </ul>
-                {button && <Button buttonStyle='btn--outline'>LOG IN</Button>}
+                {button && <Button buttonStyle='btn--outline'link='/login'>LOG IN</Button>}
             </div> 
         </nav>
     </>

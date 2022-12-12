@@ -7,6 +7,7 @@ import PaypalSection from '../PaypalSection'
 import CurrentUser from "../../model/CurrentUser";
 import Account from "../../model/Account";
 import Subcription from "../../model/Subcription";
+import Service from "../../model/Service";
 // var baseURL = 'https://localhost:8000/'
 
 
@@ -80,7 +81,7 @@ export default function Login (props) {
         navigate("/register")
     }
     const handleLogOutRedirect = async () => {
-        let response = await Subcription.createSubcription(51,1)
+        let response = await Service.getServiceList()
         console.log("Resonse in login", response)
     }
 
