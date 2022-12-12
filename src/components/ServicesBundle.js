@@ -2,6 +2,11 @@ import React from 'react'
 import './ServicesBundle.css'
 import {BiCheck} from 'react-icons/bi'
 import { Button } from './Button'
+import PaypalSection from './PaypalSection'
+
+
+
+
 function ServicesBundle() {
   return (
     <div className='services-container' >
@@ -91,32 +96,14 @@ function ServicesBundle() {
             </li>
           </ul>
         </article>
-        <div className='purchase-btns'>
-        <Button
-          className='btns'
-          buttonStyle='btn--purchase'
-          buttonSize='btn--medium'
-        >
-        Purchase
-        </Button>
+        <div className='purchase-btns1'>
+        <PaypalSection amount="50"></PaypalSection>
           </div>
-          <div className='purchase-btns'>
-        <Button
-          className='btns'
-          buttonStyle='btn--purchase'
-          buttonSize='btn--medium'
-        >
-        Purchase
-        </Button>
+          <div className='purchase-btns2'>
+          <PaypalSection amount="100"></PaypalSection>
           </div>
-          <div className='purchase-btns'>
-        <Button
-          className='btns'
-          buttonStyle='btn--purchase'
-          buttonSize='btn--medium'
-        >
-        Purchase
-        </Button>
+          <div className='purchase-btns3'>
+          <PaypalSection amount="500"></PaypalSection>
           </div>
       </div>
     </div>
