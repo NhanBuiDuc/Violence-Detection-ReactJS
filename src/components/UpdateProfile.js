@@ -35,6 +35,7 @@ export function UpdateProfile () {
         e.preventDefault();
         let response = Account.update(currentUser.account_id, name, phone, address)
         console.log(response)
+        currentUser = new CurrentUser()
     }
     // useEffect(
     //     () =>{

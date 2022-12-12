@@ -3,7 +3,7 @@ export default class Contact {
 
     static getByAcountId = async (account_id) => {
         console.log("In contact, account_id = ", account_id)
-        let action = '/contacts/acount_id/'
+        let action = '/contacts/account_id/'
         let myURL = baseURL + action
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
