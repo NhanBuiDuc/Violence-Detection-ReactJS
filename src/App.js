@@ -11,7 +11,6 @@ import Form from './components/pages/Test';
 import { Register } from './components/pages/Register';
 import Streaming from './components/pages/Streaming';
 import { UpdateProfile } from './components/UpdateProfile';
-
 function App() {
 
   return (
@@ -27,7 +26,7 @@ function App() {
           <Route path='/test' exact element={<Form/>} />
           <Route path='/profile' exact element={<Profile/>} />
           <Route path='/stream' exact element={<Streaming/>} />
-          <Route path='/update' exact element={<UpdateProfile/>} />
+          {/* <Route path='/update' exact element={<UpdateProfile/>} /> */}
         </Routes>
       </Router>
     </>

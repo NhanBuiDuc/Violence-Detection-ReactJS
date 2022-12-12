@@ -148,6 +148,9 @@ const Form = () => {
   };
 
   return (
+    <Formik>
+      {(
+          <form>
             <Box
               display="grid"
               gap="30px"
@@ -208,7 +211,7 @@ const Form = () => {
                 // helperText={touched.contact && errors.contact}
                 sx={{ gridColumn: "span 4" }}
               />
-              <TextField
+              {/* <TextField
                 fullWidth
                 variant="filled"
                 type="text"
@@ -233,7 +236,7 @@ const Form = () => {
                 error={!!touched.address2 && !!errors.address2}
                 helperText={touched.address2 && errors.address2}
                 sx={{ gridColumn: "span 4" }}
-              />
+              /> */}
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
               <Button type="submit" color="secondary" variant="contained">
