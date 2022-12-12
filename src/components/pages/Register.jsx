@@ -49,11 +49,12 @@ export function Register (props) {
             else{
                 let response = Account.register(email, password, name, phone, address)
                 console.log("In Register ", response)
-                if(response.status == "200"){
+                if(response.status === "200"){
                     console.log("In Register Status 200: ", response)
+                    setErrMsg("Successfully Loggin")
                     navigate("/login")
                 }
-                else if(response.status == "404"){
+                else if(response.status === "404"){
     
                     setErrMsg(response.message)
                     console.log(response)
@@ -65,11 +66,11 @@ export function Register (props) {
                     console.log("No Server Response")
                     errRef.current.focus();
                 } 
-                else if (response.status == "400") {
+                else if (response.status === "400") {
                     setErrMsg(response.message);
                     errRef.current.focus();
                 } 
-                else if (response.status == "401") {
+                else if (response.status === "401") {
                     setErrMsg('Unauthorized');
                     console.log("Unauthorized")
                     errRef.current.focus();

@@ -40,5 +40,5 @@ export default class CurrentUser {
             return true
         }
     }
-
+    
 }
