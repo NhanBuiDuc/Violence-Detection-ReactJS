@@ -8,7 +8,7 @@ import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "./Header.jsx";
 import CurrentUser from '../model/CurrentUser'
 import Contact from "../model/Contact";
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "./Button";
 import { useCallback } from "react";
 import { Update } from "@mui/icons-material";
@@ -20,19 +20,21 @@ async function fetchdata (account_id){
     )
 }
 
-const renderAddButton = (params) => {
-  return (
-      <strong>
-          <Button
-            buttonStyle='btn--primary'
-            buttonSize='btn--medium'
-            link='/addcontact'
-          >
-              Add
-          </Button>
-      </strong>
-  )
-}
+
+
+// const renderAddButton = (params) => {
+//   return (
+//       <strong>
+//           <Button
+//             buttonStyle='btn--primary'
+//             buttonSize='btn--medium'
+//             link='/addcontact'
+//           >
+//               Add
+//           </Button>
+//       </strong>
+//   )
+// }
 
 const ContactList = () => {
   const currentuser = new CurrentUser()
@@ -42,7 +44,9 @@ const ContactList = () => {
     fetchdata(currentuser.account_id).then(function(result){
       setdata(result)
       return result})
+
   }, [])
+
   const renderDetailsButton = (params) => {
     return (
         <strong>
@@ -52,16 +56,11 @@ const ContactList = () => {
         </strong>
     )
 }
-const onButtonClick = (e, row) => {
-  console.log(row.address)
-  console.log(row.email)
-  console.log(row.phone)
-};
 
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [selectedRows, setSelectedRows] = useState([]);
-  var columns = [
+  const columns = [
     { field: "contact_id", headerName: "ID" },
     {
       field: "address",
@@ -70,6 +69,13 @@ const onButtonClick = (e, row) => {
       cellClassName: "name-column--cell",
       editable: true,
     },
+    // {
+    //   field: "address",
+    //   headerName: "Address",
+    //   type: "number",
+    //   headerAlign: "left",
+    //   align: "left",
+    // },
     {
       field: "phone",
       headerName: "Phone Number",
@@ -86,25 +92,9 @@ const onButtonClick = (e, row) => {
       field: "edit",
       headerName:"Edit",
       flex:1,
-      renderCell: (params)=>{
-        return (
-          <Button
-            onClick={(e) => onButtonClick(e, params.row)}
-            variant="contained"
-          >
-            Edit
-          </Button>
-        );
-      },
+      renderCell: renderDetailsButton,
     },
 ];
-const handleRowEditCommit = useCallback(
-  (params) => {
-      const id = params.id;
-      const key = params.field;
-      const value = params.value; },
-  []
-);
   return (
     <Box m="20px">
       <Header title="TEAM" subtitle="Managing the Team Members" />
@@ -148,8 +138,15 @@ const handleRowEditCommit = useCallback(
         rows={data} 
         columns={columns} 
         experimentalFeatures={{ newEditingApi: true }}
-        onCellEditCommit={handleRowEditCommit}
-        />          
+        onSelectionModelChange={(ids) => {
+          const selectedIDs = new Set(ids);
+          const selectedRows = data.rows.filter((row) =>
+            selectedIDs.has(row.id),
+          );
+
+          setSelectedRows(selectedRows);
+        }}
+        />
       </Box>
     </Box>
   );

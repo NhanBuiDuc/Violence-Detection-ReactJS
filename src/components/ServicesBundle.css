@@ -1,7 +1,6 @@
 .services-container {
     height: 20cm;
-    background: linear-gradient(#fff, #fff 50%, rgb(83, 78, 79) 50%, rgb(3, 3, 3) 100%);
-   
+    background: linear-gradient(#fff, #fff 50%, rgb(83, 82, 83) 50%, rgb(104, 103, 103) 100%);
 }
 .services-header > h1 {
     text-align: left;
@@ -23,13 +22,13 @@
     justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 10cm;
-    margin-left: 14cm;
+    margin-left: 19cm;
 
 }
 
 
 .service-head {
-    margin-bottom: 1cm;
+    margin: auto;
 }
 
 .service-info {
@@ -70,6 +69,7 @@
     width: 320px;
     background: rgb(199, 196, 196);
     padding: 40px 60px 40px;
+    transform: translateY(-40px);
 }
 
 .service::before {
@@ -85,11 +85,7 @@
     transition: transform 0.5s;
 }
 
-.service:hover::before {
-    transform: scaleY(1);
-    transform-origin: bottom;
-    transition: transform 0.5s;
-}
+
 
 @media screen and (max-width: 960px) {
 .services-container > h1 {
