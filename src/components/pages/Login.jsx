@@ -74,11 +74,6 @@ export default function Login(props) {
     console.log("register clicked");
     navigate("/register");
   };
-  const handleLogOutRedirect = async () => {
-    let response = await Service.getServiceList();
-    console.log("Resonse in login", response);
-  };
-
   return (
     <>
       <section>
@@ -121,12 +116,7 @@ export default function Login(props) {
             {" "}
             Register
           </button>
-          <button className="login-button btn-7" onClick={handleLogOutRedirect}>
-            {" "}
-            Log Out
-          </button>
         </div>
-        <PaypalSection amount="20"></PaypalSection>
       </section>
     </>
   );

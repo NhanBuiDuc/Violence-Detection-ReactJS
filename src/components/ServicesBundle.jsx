@@ -6,16 +6,19 @@ import PaypalSection from './PaypalSection'
 import { useState, useRef, useEffect } from "react";
 import Subcription from "../model/Subcription";
 import Service from "../model/Service";
-
+import { useNavigate } from "react-router-dom";
 import CurrentUser from '../model/CurrentUser'
 import { duration } from '@mui/material'
-
+//import { Link, useLocation } from 'react-router-dom'
 
 
 
 function ServicesBundle() {
   
   const [services, setServices] = useState("");
+  const [currentUser, setCurrentUser] = useState(new CurrentUser)
+
+  const navigate = useNavigate();
 
   let fetchData = async () => {
     let services = await Service.getServiceList()
@@ -26,16 +29,28 @@ function ServicesBundle() {
 
   useEffect(() => {
     fetchData()
+    try{
+      currentUser.parse()
+      console.log("current user", currentUser)
+      setCurrentUser(currentUser)
+    }
+    catch(err){
+
+    }
+
   },[]);
   
+  const handleLogin = (e) => {
+    navigate('/login')
+  }
   console.log(services)
   return (
-
+    
     <div className='services-container' >
-      <div className='services-header' >
+      {/* <div className='services-header' >
         <h1> SERVICES </h1>
         <h2> New technology, new cameras. As the violence continue to rise, have your protection right now. </h2>
-      </div>
+      </div> */}
       <div className='services-list'>
         <article className='service'>
           <div className='service-head'>
@@ -119,15 +134,25 @@ function ServicesBundle() {
             </li>
           </ul>
         </article>
-        <div className='purchase-btns1'>
-        <PaypalSection amount="50"></PaypalSection>
+        {!currentUser.loggedIn?
+          <div className='purchase-btns1' >
+            <Button onClick={handleLogin}>GETTING START BY LOG IN</Button>
+          </div>
+        : 
+        <>
+          <div className='purchase-btns1'>
+          {/* {!email? <Button buttonStyle='btn--outline'link='/login'>LOG IN</Button> : <button onClick={logOut}>LOG OUT</button>} */}
+            <PaypalSection amount={services && services[0].price} service_id = {services && services[0].service_id}></PaypalSection>
           </div>
           <div className='purchase-btns2'>
-          <PaypalSection amount="100"></PaypalSection>
+            <PaypalSection amount={services && services[1].price } service_id = {services && services[1].service_id}></PaypalSection>
           </div>
           <div className='purchase-btns3'>
-          <PaypalSection amount="500"></PaypalSection>
+            <PaypalSection amount={services && services[2].price} service_id = {services && services[2].service_id}></PaypalSection>
           </div>
+        </>
+        }
+        
       </div>
     </div>
   )

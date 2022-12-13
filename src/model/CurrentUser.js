@@ -7,9 +7,6 @@ export default class CurrentUser {
       this.phone = phone;
       this.address = address;
       this.loggedIn = false
-      if(this.loggedIn == true){
-        this.parse()
-      }
 
     }
 

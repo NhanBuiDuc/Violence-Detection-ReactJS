@@ -72,6 +72,7 @@ return (
                     </li>
                 </ul>
                 {!email? <Button buttonStyle='btn--outline'link='/login'>LOG IN</Button> : <button onClick={logOut}>LOG OUT</button>}
+                
             </div> 
         </nav>
     </>

@@ -14,28 +14,29 @@ var controller = '/users'
 var URL = baseURL + controller
 
 export function UpdateProfile () {
-    const currentUser = new CurrentUser()
-    const [phone, setphone]=useState({})
-    const [name, setname]=useState()
-    const [address, setaddress]=useState()
 
+    let currentUser = new CurrentUser()
+    currentUser.parse()
 
-
+    const [phone, setphone]=useState("")
+    const [name, setname]=useState("")
+    const [address, setaddress]=useState("")
 
     useEffect( () => {
+
         console.log(currentUser.account_id)
         setname(currentUser.name)
         setphone(currentUser.phone)
         setaddress(currentUser.address)
     }, [])
 
-
-
     const submit = async (e) => {
         e.preventDefault();
-        let response = Account.update(currentUser.account_id, name, phone, address)
+        let response = await Account.update(currentUser.account_id, name, phone, address)
         console.log(response)
-        currentUser = new CurrentUser()
+        response = await Account.getUserByAccountId(currentUser.account_id)
+
+        Account.setUserSession(response)
     }
     // useEffect(
     //     () =>{
