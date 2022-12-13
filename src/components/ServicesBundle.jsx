@@ -29,9 +29,13 @@ function ServicesBundle() {
 
   useEffect(() => {
     fetchData()
-    if(currentUser.loggedIn == true){
+    try{
       currentUser.parse()
       console.log("current user", currentUser)
+      setCurrentUser(currentUser)
+    }
+    catch(err){
+
     }
 
   },[]);
