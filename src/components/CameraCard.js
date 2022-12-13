@@ -1,4 +1,3 @@
-import { Card, Image, Text } from '@mantine/core';
 import React from 'react';
 import Camera from '../model/Camera'
 import { useEffect,useState } from 'react';
