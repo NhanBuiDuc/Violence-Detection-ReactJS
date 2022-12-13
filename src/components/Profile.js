@@ -55,7 +55,8 @@ export function UserProfile () {
     !editmode?
         <>
                 <section>
-                        <div className="auth-form-container">
+
+                        <div className="profile-form-container">
                             <form className="register-form" onSubmit={(e) => edit(e)}>
                                 <div className="upper-input"> 
                                     <div className="align-left">

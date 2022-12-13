@@ -20,7 +20,6 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-        
           <Route path='/' exact element={<Home/>} />
           <Route path='/Login' exact element={<Login/>} />
           <Route path='/Register' exact element = {<Register/>} />
