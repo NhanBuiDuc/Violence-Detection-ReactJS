@@ -32,10 +32,10 @@ function ServicesBundle() {
   return (
 
     <div className='services-container' >
-      <div className='services-header' >
+      {/* <div className='services-header' >
         <h1> SERVICES </h1>
         <h2> New technology, new cameras. As the violence continue to rise, have your protection right now. </h2>
-      </div>
+      </div> */}
       <div className='services-list'>
         <article className='service'>
           <div className='service-head'>
