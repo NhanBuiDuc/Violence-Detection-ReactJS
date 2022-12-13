@@ -15,19 +15,6 @@ async function fetchdata (account_id){
     )
 }
 
-const renderAddButton = (params) => {
-  return (
-      <strong>
-          <Button
-            buttonStyle='btn--primary'
-            buttonSize='btn--medium'
-            link='/addcontact'
-          >
-              Add
-          </Button>
-      </strong>
-  )
-}
 
 const ContactList = () => {
   const currentuser = new CurrentUser()
@@ -111,6 +98,7 @@ const onButtonClick = async (e, row) => {
       <Button
             buttonStyle='btn--primary'
             buttonSize='btn--medium'
+            link='/addcontact'
           >
               Add
           </Button>
