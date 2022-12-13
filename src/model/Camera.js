@@ -53,9 +53,9 @@ export default class Camera {
             return null
         }
     }
-    static getCameraBySubcriptionAcountId = async (account_id) => {
+    static getCameraByAcountId = async (account_id) => {
         try{
-            let action = '/subcriptions/cameras'
+            let action = '/users/cameras'
             let json = "null"
             let myURL = baseURL + action
             let headers = new Headers();
