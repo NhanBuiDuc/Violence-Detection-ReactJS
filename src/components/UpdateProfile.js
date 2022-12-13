@@ -35,7 +35,8 @@ export function UpdateProfile () {
         let response = await Account.update(currentUser.account_id, name, phone, address)
         console.log(response)
         response = await Account.getUserByAccountId(currentUser.account_id)
-        console.log(response)
+
+        Account.setUserSession(response)
     }
     // useEffect(
     //     () =>{
