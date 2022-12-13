@@ -3,41 +3,31 @@ import "./Log.css"
 import Message from './LogChat'
 
 import VD from '../model/VD'
+
+
+const start = () => {
+    let response = VD.vd_start(1)
+    return response
+}
+
 function Log() {
 
 
-    
-    
-
-    const[interval, setInterval] = useState()
+    const[xd, setXD] = useState("")
     useEffect(() =>{
-        // let i = 0;
-        // interval = setInterval(() => {
-        //   if (i<11) {
-        //     this.getPerson(this.apiUrl + i);
-        //     i++;
-        //     console.log("waiting for the next call.");
-        //   }
-        //   else {
-        //     clearInterval(interval)
-        //   }
-    
-        // }, 5000);
-        VD.vd_start()
+        // start()
     },[])
+
     useEffect(() =>{
-        let i = 0;
-        interval = setInterval(() => {
-          if (i<11) {
-            this.getPerson(this.apiUrl + i);
-            i++;
-            console.log("waiting for the next call.");
-          }
-          else {
-            clearInterval(interval)
-          }
-    
-        }, 5000);
+
+        const xd = async () => {
+            let response = await VD.vd_xd(1)
+            console.log("Use Effect xd", response)
+            setXD(xd)
+            return response
+        }
+        xd()
+        console.log(xd)
     })
     
   return (
