@@ -1,18 +1,28 @@
 import React from 'react'
 import "./Log.css"
+import Message from './LogChat'
 
 
 function Log() {
   return (
     <div className='messenger'>
-        <div className='chatMenu'>
-            <div className="chatMenuWrapper">menu</div>
-        </div>
+
         <div className='chatBox'>
-            <div className="chatBoxWrapper">box</div>
-        </div>
-        <div className='chatOnline'>
-            <div className="chatOnlineWrapper">online</div>
+            <div className="chatBoxWrapper">
+                <div className="chatBoxTop">
+                    <Message own={true}/>
+                    <Message/>
+                    <Message own={true}/>
+                    <Message/><Message own={true}/>
+                    <Message/><Message own={true}/>
+                    <Message/><Message own={true}/>
+                    <Message/><Message own={true}/>
+                    <Message/>
+                </div>
+                <div className="chatBoxBottom">
+                    <button className='chatSubmitButton'>Send</button>
+                </div>
+            </div>
         </div>
     </div>
   )
