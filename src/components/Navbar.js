@@ -58,7 +58,7 @@ return (
                         </Link>
                     </li>
                     <li className='nav-item'>
-                        <Link to='/cameras' className='nav-links' onClick={closeMobileMenu}>
+                        <Link to='/stream' className='App' onClick={closeMobileMenu}>
                             Cameras
                         </Link>
                     </li>
