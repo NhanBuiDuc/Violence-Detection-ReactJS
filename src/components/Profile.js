@@ -88,7 +88,6 @@ export function UserProfile () {
     <section>
             <div className="auth-form-container">
                 <form className="register-form" onSubmit={(e) => submit(e)}>
-                <form className="register-form" onSubmit={(e) => submit(e)}>
                     <div className="upper-input"> 
                         <div className="align-left">
                             <label htmlFor="email">Email</label>
