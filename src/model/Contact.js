@@ -104,4 +104,31 @@ export default class Contact {
             return null
         }
     }
+    static add = async (contact_id, email, phone, address) => {
+        try{
+            let action = '/contacts'
+            let json = "null"
+            let myURL = baseURL + action
+            let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+            const requestBody = {contact_id, email, phone, address}
+            let response = await fetch(myURL, {
+                mode: 'cors',
+                method: 'PUT',
+                headers: headers,
+                body: JSON.stringify(requestBody)
+            }).then(function(response){
+                return response.json();
+            }).then(function(myJson) {
+                return myJson
+            });
+            console.log("In Contact, resonse = ", response)
+            
+            return response
+        }
+        catch(err){
+
+            return null
+        }
+    }
 }

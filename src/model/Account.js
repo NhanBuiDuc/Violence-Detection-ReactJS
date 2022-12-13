@@ -74,18 +74,18 @@ export default class Account {
     static logOut(){
         sessionStorage.removeItem('currentUser');
     }
+    
     static update = async (account_id, name, phone, address) => {
         try{
             let action = '/users/'
-            let json = "PUT"
             let myURL = baseURL + action
 
             let headers = new Headers();
             headers.append('Content-Type', 'application/json');
 
             const requestBody = {account_id, name, phone, address}
-            let response = await fetch(myURL, {
-                mode: 'cors',
+            let updateResponse = await fetch(myURL, {
+                mode:'cors',
                 method: 'PUT',
                 headers: headers,
                 body: JSON.stringify(requestBody)
@@ -94,18 +94,31 @@ export default class Account {
             }).then(function(myJson) {
                 return myJson
             });
-            console.log("In Account Update, resonse = ", response)
-            json = response
-            console.log("In Account Update, json = ", json)
-            if(json.status === "200"){
-                console.log("In Acount, in if")
-                Account.setUserSession(json) 
-            }
-            return response
+            return updateResponse
         }
         catch(err){
 
             return null
         }
+    }
+    static getUserByAccountId = async (account_id) => {
+        let action = '/users/id/'
+        let myURL = baseURL + action
+
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        const requestBody = {account_id}
+        let response = await fetch(myURL, {
+                mode:'cors',
+                method: 'POST',
+                headers: headers,
+                body: JSON.stringify(requestBody)
+            }).then(function(response){
+                return response.json();
+            }).then(function(myJson) {
+                return myJson
+            });
+        return response
     }
 }
