@@ -8,9 +8,9 @@ function Streaming() {
         <div className="App">
            <div className="App-header">
             <video src={logo} className="App-logo" alt="logo" autoPlay loop muted />
-            {/* <img src={'/video_feed'} className="App-logo" alt="logo" />
+            <img src={'https://e4da-171-247-145-94.ap.ngrok.io/video_feed'} className="App-logo" alt="logo" />
             <img src={'/video_feed'} className="App-logo" alt="logo" />
-            <img src={'/video_feed'} className="App-logo" alt="logo" /> */}
+            <img src={'/video_feed'} className="App-logo" alt="logo" />
           
           </div> */
           

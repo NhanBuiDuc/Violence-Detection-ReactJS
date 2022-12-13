@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect} from "react";
 import {Navigate, useNavigate } from 'react-router-dom'
 import '../App.css'
-import '../components/pages/css/register.css'
+import './Profile.css'
 import Profile from "./pages/Profile";
 import CurrentUser from "../model/CurrentUser";
 import Account from "../model/Account";
@@ -87,6 +87,7 @@ export function UserProfile () {
     <>
     <section>
             <div className="auth-form-container">
+                <form className="register-form" onSubmit={(e) => submit(e)}>
                 <form className="register-form" onSubmit={(e) => submit(e)}>
                     <div className="upper-input"> 
                         <div className="align-left">
