@@ -12,6 +12,7 @@ import Streaming from './components/pages/Streaming';
 import { UpdateProfile } from './components/UpdateProfile';
 import ContactList from './components/Contact';
 import { AddContact } from './components/AddContact';
+import ChatBox from './components/ChatBox';
 function App() {
 
   return (
@@ -19,6 +20,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
+          
           <Route path='/' exact element={<Home/>} />
           <Route path='/Login' exact element={<Login/>} />
           <Route path='/Register' exact element = {<Register/>} />
@@ -29,8 +31,10 @@ function App() {
           <Route path='/update' exact element={<UpdateProfile/>} />
           <Route path='/contact' exact element={<ContactList/>} />
           <Route path='/addcontact' exact element={<AddContact/>} />
+          <Route path='/chatbox' exact element={<ChatBox/>} />
         </Routes>
       </Router>
+
     </>
   );
 }
