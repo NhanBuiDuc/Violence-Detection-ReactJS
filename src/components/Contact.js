@@ -1,18 +1,13 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "./theme";
-
-import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
-import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
-import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "./Header.jsx";
 import CurrentUser from '../model/CurrentUser'
 import Contact from "../model/Contact";
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "./Button";
 import { useCallback } from "react";
-import { Update } from "@mui/icons-material";
-import { GridCellEditStopReasons } from "@mui/x-data-grid";
+
 async function fetchdata (account_id){
     let data = await Contact.getByAcountId(account_id)
     return (
@@ -52,12 +47,6 @@ const ContactList = () => {
         </strong>
     )
 }
-const onButtonClick = (e, row) => {
-  console.log(row.address)
-  console.log(row.email)
-  console.log(row.phone)
-};
-
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [selectedRows, setSelectedRows] = useState([]);
@@ -98,6 +87,7 @@ const onButtonClick = (e, row) => {
       },
     },
 ];
+
 const handleRowEditCommit = useCallback(
   (params) => {
       const id = params.id;
@@ -105,6 +95,16 @@ const handleRowEditCommit = useCallback(
       const value = params.value; },
   []
 );
+
+const onButtonClick = async (e, row) => {
+  e.preventDefault();
+  let response = await Contact.update(row.contact_id, row.email, row.phone, row.address)
+        console.log(response)
+        response = await Contact.getByAcountId(row.contact_id)
+};
+
+
+
   return (
     <Box m="20px">
       <Header title="TEAM" subtitle="Managing the Team Members" />
