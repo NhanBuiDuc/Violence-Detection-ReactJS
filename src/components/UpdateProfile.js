@@ -15,11 +15,10 @@ var URL = baseURL + controller
 
 export function UpdateProfile () {
     const currentUser = new CurrentUser()
+    currentUser.parse()
     const [phone, setphone]=useState({})
     const [name, setname]=useState()
     const [address, setaddress]=useState()
-
-
 
 
     useEffect( () => {
