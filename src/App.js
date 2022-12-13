@@ -10,7 +10,6 @@ import Profile from './components/pages/Profile';
 import { Register } from './components/pages/Register';
 import Streaming from './components/pages/Streaming';
 import { UpdateProfile } from './components/UpdateProfile';
-
 function App() {
 
   return (
@@ -25,7 +24,7 @@ function App() {
           <Route path='/Services' exact element={<Services/>} />
           <Route path='/profile' exact element={<Profile/>} />
           <Route path='/stream' exact element={<Streaming/>} />
-          <Route path='/update' exact element={<UpdateProfile/>} />
+          {/* <Route path='/update' exact element={<UpdateProfile/>} /> */}
         </Routes>
       </Router>
     </>

@@ -47,10 +47,12 @@ export function Register (props) {
                 errRef.current.focus();
             }
             else{
-                let response = Account.register(email, password, name, phone, address)
+                let response = await Account.register(email, password, name, phone, address)
                 console.log("In Register ", response)
                 if(response.status === "200"){
                     console.log("In Register Status 200: ", response)
+                    alert("Account has been created")
+                    setErrMsg("Successfully Registeration")
                     navigate("/login")
                 }
                 else if(response.status === "404"){

@@ -36,7 +36,6 @@ export default class Account {
     static register = async (email, password, name, phone, address) => {
         try{
             let action = '/register'
-            let json = "null"
             let myURL = baseURL + action
 
             let headers = new Headers();
@@ -96,6 +95,12 @@ export default class Account {
                 return myJson
             });
             console.log("In Account Update, resonse = ", response)
+            json = response
+            console.log("In Account Update, json = ", json)
+            if(json.status === "200"){
+                console.log("In Acount, in if")
+                Account.setUserSession(json) 
+            }
             return response
         }
         catch(err){

@@ -5,6 +5,7 @@ import {
     usePayPalScriptReducer
 } from "@paypal/react-paypal-js";
 import Subcription from "../model/Subcription";
+import CurrentUser from "../model/CurrentUser";
 
 var baseURL = 'https://violence-detection-backend.vercel.app'
 var controller = '/orders'
@@ -16,7 +17,8 @@ const currency = "USD";
 const style = {"layout":"vertical"};
 
 const transactionSuccessful = async (data) => {
-    let response = await Subcription.createSubcription(51,1)
+    let currentUser = new CurrentUser()
+    let response = await Subcription.createSubcription(currentUser.account_id,1)
     console.log("Resonse in login", response)
 }
 // Custom component to wrap the PayPalButtons and handle currency changes
@@ -79,7 +81,7 @@ export default function PaypalSection(props) {
 		<div style={{ maxWidth: "750px", minHeight: "200px" }}>
             <PayPalScriptProvider
                 options={{
-                    "client-id": "test",
+                    "client-id": "AciWMS7hZ0ZHi-o1N5GJYnyzmiO3e0PaK3sQ1herXiu7DlVAqyYiCJbK6p7ZuCOtb7qDc_qghW89IKSC",
                     components: "buttons",
                     currency: "USD"
                 }}
@@ -90,7 +92,6 @@ export default function PaypalSection(props) {
                     amount={props.amount}
                 />
 			</PayPalScriptProvider>
-            <p>{props.amount}</p>
 		</div>
 	);
 }

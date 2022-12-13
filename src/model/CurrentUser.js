@@ -7,7 +7,10 @@ export default class CurrentUser {
       this.phone = phone;
       this.address = address;
       this.loggedIn = false
-      this.parse()
+      if(this.loggedIn == true){
+        this.parse()
+      }
+
     }
 
     toString() {
@@ -40,5 +43,5 @@ export default class CurrentUser {
             return true
         }
     }
-
+    
 }

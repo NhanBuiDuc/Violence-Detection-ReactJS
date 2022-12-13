@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Button } from './Button'
 import './Navbar.css'
+
 function Navbar() {
     const[click, setClick] = useState(false)
     const[button, setButton] = useState(true)
+    const[email, setEmail] = useState(null)
+    const location = useLocation();
 
     const handleClick = () => setClick(!click)
     const closeMobileMenu = () => setClick(false)
@@ -15,11 +18,21 @@ function Navbar() {
         } else {
             setButton(true);
         }
+        
+    }
+
+    function logOut() {
+
+        sessionStorage.clear();
+        setEmail(null);
     }
 
     useEffect(() => {
         showButton();
-    }, [])
+        if(sessionStorage.length > 0) {
+            setEmail(sessionStorage.getItem("Email"));
+        }
+    }, [location])
     window.addEventListener('resize', showButton);
 
 return (
@@ -50,12 +63,15 @@ return (
                         </Link>
                     </li>
                     <li className='nav-item'>
-                        <Link to='/login' className='nav-links-mobile' onClick={closeMobileMenu}>
+                        {sessionStorage.length === 0? <Link to='/login' className='nav-links-mobile' onClick={closeMobileMenu}>
                             Login
-                        </Link>
+                        </Link>: <Link to='#' className='nav-links-mobile' >
+                            Logout
+                        </Link>}
+                        
                     </li>
                 </ul>
-                {button && <Button buttonStyle='btn--outline'link='/login'>LOG IN</Button>}
+                {!email? <Button buttonStyle='btn--outline'link='/login'>LOG IN</Button> : <button onClick={logOut}>LOG OUT</button>}
             </div> 
         </nav>
     </>
