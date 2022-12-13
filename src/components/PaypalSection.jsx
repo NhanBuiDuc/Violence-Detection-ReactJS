@@ -16,13 +16,15 @@ const amount = "2";
 const currency = "USD";
 const style = {"layout":"vertical"};
 
-const transactionSuccessful = async (data) => {
+const transactionSuccessful = async (service_id) => {
     let currentUser = new CurrentUser()
-    let response = await Subcription.createSubcription(currentUser.account_id,1)
+    currentUser.parse()
+    console.log(currentUser.account_id)
+    let response = await Subcription.createSubcription(currentUser.account_id, service_id)
     console.log("Resonse in login", response)
 }
 // Custom component to wrap the PayPalButtons and handle currency changes
-const ButtonWrapper = ({ currency, showSpinner, amount }) => {
+const ButtonWrapper = ({ currency, showSpinner, amount, service_id}) => {
     // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
     // This is the main reason to wrap the PayPalButtons in a new component
     const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
@@ -68,7 +70,7 @@ const ButtonWrapper = ({ currency, showSpinner, amount }) => {
                         // Your code here after capture the order'
                         console.log("data ", data)
                         console.log("action ", actions)
-                        transactionSuccessful(data)
+                        transactionSuccessful(service_id)
                     });
                 }}
             />
@@ -90,6 +92,7 @@ export default function PaypalSection(props) {
                     currency={currency}
                     showSpinner={false}
                     amount={props.amount}
+                    service_id = {props.service_id}
                 />
 			</PayPalScriptProvider>
 		</div>
