@@ -33,7 +33,7 @@ function Demo() {
     >
       <Card.Section>
         <Image
-          src={data.}
+          src={data}
           height={160}
           alt="No way!"
         />
