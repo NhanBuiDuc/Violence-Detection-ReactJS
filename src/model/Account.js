@@ -95,6 +95,12 @@ export default class Account {
                 return myJson
             });
             console.log("In Account Update, resonse = ", response)
+            json = response
+            console.log("In Account Update, json = ", json)
+            if(json.status === "200"){
+                console.log("In Acount, in if")
+                Account.setUserSession(json) 
+            }
             return response
         }
         catch(err){

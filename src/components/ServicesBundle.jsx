@@ -3,18 +3,34 @@ import './ServicesBundle.css'
 import {BiCheck} from 'react-icons/bi'
 import { Button } from './Button'
 import PaypalSection from './PaypalSection'
-
-
-
+import { useState, useRef, useEffect } from "react";
+import Subcription from "../model/Subcription";
+import Service from "../model/Service";
 
 import CurrentUser from '../model/CurrentUser'
+import { duration } from '@mui/material'
+
+
+
 
 function ServicesBundle() {
+  
+  const [services, setServices] = useState("");
 
-  var currentUser = new CurrentUser()
+  let fetchData = async () => {
+    let services = await Service.getServiceList()
+    setServices(services.body)
+  }
+  
+  // var currentUser = new CurrentUser()
 
-
+  useEffect(() => {
+    fetchData()
+  },[]);
+  
+  console.log(services)
   return (
+
     <div className='services-container' >
       <div className='services-header' >
         <h1> SERVICES </h1>
@@ -23,7 +39,8 @@ function ServicesBundle() {
       <div className='services-list'>
         <article className='service'>
           <div className='service-head'>
-            <h3> NORMAL </h3>
+            <h3> {services && services[0].name}
+            </h3>
           </div>
           <ul className='service-info'>
             <li>
@@ -32,7 +49,7 @@ function ServicesBundle() {
             </li>
             <li>
               <BiCheck className='service-info-icon' />
-              <p> 6 months support </p>
+              <p> {services && services[0].duration} months support </p>
             </li>
             <li>
               <BiCheck className='service-info-icon' />
@@ -50,7 +67,7 @@ function ServicesBundle() {
         </article>
         <article className='service'>
           <div className='service-head'>
-            <h3> V.I.P </h3>
+            <h3>{services && services[1].name} </h3>
           </div>
           <ul className='service-info'>
             <li>
@@ -59,7 +76,7 @@ function ServicesBundle() {
             </li>
             <li>
               <BiCheck className='service-info-icon' />
-              <p> 12 months support </p>
+              <p> {services && services[1].duration} months support </p>
             </li>
             <li>
               <BiCheck className='service-info-icon' />
@@ -77,7 +94,7 @@ function ServicesBundle() {
         </article>
         <article className='service'>
           <div className='service-head'>
-            <h3> COMPANY </h3>
+            <h3> {services && services[2].name} </h3>
           </div>
           <ul className='service-info'>
             <li>
@@ -86,7 +103,7 @@ function ServicesBundle() {
             </li>
             <li>
               <BiCheck className='service-info-icon' />
-              <p> 5 years support </p>
+              <p> {services && services[2].duration} months support </p>
             </li>
             <li>
               <BiCheck className='service-info-icon' />
