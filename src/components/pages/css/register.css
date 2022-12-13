@@ -15,12 +15,27 @@ code {
 }
 .auth-form-container, .login-form {
   display: flex;
-  flex-direction: column;
+  flex-direction:column;
   align-items: center;
+  margin: left 20cm;
 }
 
-form.\.register-form {
+.profile-form-container{
+  text-align: center;
   display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-image: linear-gradient(79deg, rgb(33, 51, 100),rgb(133, 155, 228),rgb(116, 234, 238));
+}
+
+.subScription{
+  display: flex;
+  color: rgb(238, 18, 18);
+}
+form.\.register-form {
+  display: flexbox;
   align-items: center;
   flex-direction: column;
 }
@@ -28,7 +43,6 @@ form.\.register-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 2rem;
 }
 .align-right {
   display: flex;
@@ -38,13 +52,17 @@ form.\.register-form {
 
 }
 
+
 .upper-input {
   display: flex;
   flex-direction: row;
+  float: left;
 }
 .downward-input {
+  align-content: center;
   margin-top: 1rem;
   width: -webkit-fill-available;
+  float: left;
 }
 button.login-button.btn-11 {
   width: inherit;

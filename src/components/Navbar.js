@@ -27,6 +27,8 @@ function Navbar() {
         setEmail(null);
     }
 
+   
+
     useEffect(() => {
         showButton();
         if(sessionStorage.length > 0) {
@@ -62,17 +64,21 @@ return (
                             Cameras
                         </Link>
                     </li>
+                    {/* <li className='nav-item'>
+                        <Link to='/stream' className='App' onClick={closeMobileMenu}>
+                            Cameras
+                        </Link>
+                    </li> */}
                     <li className='nav-item'>
                         {sessionStorage.length === 0? <Link to='/login' className='nav-links-mobile' onClick={closeMobileMenu}>
                             Login
                         </Link>: <Link to='#' className='nav-links-mobile' >
                             Logout
                         </Link>}
-                        
                     </li>
                 </ul>
                 {!email? <Button buttonStyle='btn--outline'link='/login'>LOG IN</Button> : <button onClick={logOut}>LOG OUT</button>}
-                
+                {!email? <button onClick={logOut}></button>:<Button buttonStyle='btn--outline'link='/profile'>Profile</Button> }
             </div> 
         </nav>
     </>

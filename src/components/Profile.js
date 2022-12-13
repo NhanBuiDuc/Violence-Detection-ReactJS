@@ -55,7 +55,8 @@ export function UserProfile () {
     !editmode?
         <>
                 <section>
-                        <div className="auth-form-container">
+
+                        <div className="profile-form-container">
                             <form className="register-form" onSubmit={(e) => edit(e)}>
                                 <div className="upper-input"> 
                                     <div className="align-left">
@@ -73,7 +74,13 @@ export function UserProfile () {
                                     <button className="login-button btn-11" type="submit">Edit</button>
                                 </div>
                             </form>
+
+                            <form className="subScription">
+                                <p>Hell1o</p>
+                            </form>
+                            
                         </div>
+                        
                 </section>
         </>
     :
@@ -81,10 +88,11 @@ export function UserProfile () {
     <section>
             <div className="auth-form-container">
                 <form className="register-form" onSubmit={(e) => submit(e)}>
+                <form className="register-form" onSubmit={(e) => submit(e)}>
                     <div className="upper-input"> 
                         <div className="align-left">
                             <label htmlFor="email">Email</label>
-                            <input value={email} readOnly='true' type='text' name="email" />
+                            <input value={email} readOnly="true" type='text' name="email" />
                             <label htmlFor ="phone">Phone</label>
                             <input onChange={(e)=>setphone(e.target.value)} value={phone} type='text' name="phone" />
                             <label htmlFor="name">Name</label>
@@ -97,6 +105,9 @@ export function UserProfile () {
                         <button className="login-button btn-11" type="submit">Submit</button>
                     </div>
                 </form>
+                <form className="subScription">
+                                <p>Hello1</p>
+                            </form>
             </div>
     </section>
 </>
