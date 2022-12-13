@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../App.css';
 import Footer from '../Footer';
-import UserProfile from '../UserProfile.js';
+// import UserProfile from '../UserProfile.js';
 
 
 
@@ -9,7 +9,7 @@ import UserProfile from '../UserProfile.js';
 function Profile() {
     return (
         <>
-        <UserProfile/>
+        {/* <UserProfile/> */}
         <Footer />
         </>
       );

@@ -53,12 +53,12 @@
 
 import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import { tokens } from "../components/theme";
+import { tokens } from "./theme";
 
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
-import Header from "../components/Header.jsx";
+import Header from "./Header.jsx";
 import CurrentUser from '../model/CurrentUser'
 import Contact from "../model/Contact";
 import { useEffect, useRef, useState } from "react";
