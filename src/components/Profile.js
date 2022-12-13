@@ -13,7 +13,7 @@ var baseURL = 'https://c9b80c4b-4436-4358-8ab8-2bc97afbc640.mock.pstmn.io'
 var controller = '/users'
 var URL = baseURL + controller
 
-export function UpdateProfile () {
+export function UserProfile () {
 
     let currentUser = new CurrentUser()
     currentUser.parse()
@@ -21,6 +21,7 @@ export function UpdateProfile () {
     const [phone, setphone]=useState("")
     const [name, setname]=useState("")
     const [address, setaddress]=useState("")
+    const [email, setemail]= useState("")
 
     useEffect( () => {
         seteditmode(false)
@@ -28,6 +29,7 @@ export function UpdateProfile () {
         setname(currentUser.name)
         setphone(currentUser.phone)
         setaddress(currentUser.address)
+        setemail(currentUser.email)
     }, [])
 
     const submit = async (e) => {
@@ -57,12 +59,14 @@ export function UpdateProfile () {
                             <form className=".register-form" onSubmit={(e) => edit(e)}>
                                 <div className="upper-input"> 
                                     <div className="align-left">
+                                        <label htmlFor="email">Email</label>
+                                        <input value={email} type='text' name="email" />
                                         <label htmlFor ="phone">Phone</label>
-                                        <input onChange={(e)=>setphone(e.target.value)} value={phone} type='text' name="phone" />
+                                        <input value={phone} type='text' name="phone" />
                                         <label htmlFor="name">Name</label>
-                                        <input onChange={(e)=>setname(e.target.value)} value={name} type='name' name="name"/>
+                                        <input value={name} type='name' name="name"/>
                                         <label htmlFor ="address">Address</label>
-                                        <input onChange={(e) =>setaddress(e.target.value)} value={address} type="address" name="address"/>
+                                        <input value={address} type="address" name="address"/>
                                     </div>
                                 </div>
                                 <div className="downward-input"> 
