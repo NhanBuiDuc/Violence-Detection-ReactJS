@@ -26,7 +26,7 @@ const ContactList = () => {
       return result})
   }, [])
 
-
+  console.log(data)
 
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
