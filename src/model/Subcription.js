@@ -28,7 +28,7 @@ export default class Subcription {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        const requestBody = {account_id, service_id}
+        const requestBody = {account_id}
         let response = await fetch(myURL, {
             mode: 'cors',
             method: 'POST',
