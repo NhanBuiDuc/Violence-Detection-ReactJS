@@ -19,6 +19,10 @@ code {
   align-items: center;
 }
 
+.subScription{
+  display: block;
+  color: rgb(238, 18, 18);
+}
 form.\.register-form {
   display: flex;
   align-items: center;
@@ -38,13 +42,16 @@ form.\.register-form {
 
 }
 
+
 .upper-input {
   display: flex;
   flex-direction: row;
+  float: left;
 }
 .downward-input {
   margin-top: 1rem;
   width: -webkit-fill-available;
+  float: left;
 }
 button.login-button.btn-11 {
   width: inherit;
