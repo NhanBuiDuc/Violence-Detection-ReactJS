@@ -1,4 +1,4 @@
-const baseURL = 'localhost:8000'
+const baseURL = 'http://localhost:8000'
 export default class VD {
     static vd_start = async (id) => {
         try{
@@ -26,5 +26,26 @@ export default class VD {
 
             return null
         }
+    }
+    static vd_xd = async (id) => {
+        let action = '/xd'
+        let json = "null"
+        let myURL = baseURL + action
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        const loginBody = {id}
+        let response = await fetch(myURL, {
+            mode: 'cors',
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify(loginBody)
+        }).then(function(response){
+            return response.json();
+        }).then(function(myJson) {
+            return myJson
+        });
+        console.log("In VD_XD, resonse = ", response)
+
+        return response
     }
 }
