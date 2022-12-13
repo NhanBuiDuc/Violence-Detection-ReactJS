@@ -24,7 +24,7 @@ function App() {
           <Route path='/Services' exact element={<Services/>} />
           <Route path='/profile' exact element={<Profile/>} />
           <Route path='/stream' exact element={<Streaming/>} />
-          {/* <Route path='/update' exact element={<UpdateProfile/>} /> */}
+          <Route path='/update' exact element={<UpdateProfile/>} />
         </Routes>
       </Router>
     </>
