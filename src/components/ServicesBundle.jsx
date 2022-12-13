@@ -120,13 +120,13 @@ function ServicesBundle() {
           </ul>
         </article>
         <div className='purchase-btns1'>
-        <PaypalSection amount="50"></PaypalSection>
+        <PaypalSection amount={services && services[0].price}></PaypalSection>
           </div>
           <div className='purchase-btns2'>
-          <PaypalSection amount="100"></PaypalSection>
+          <PaypalSection amount={services && services[1].price}></PaypalSection>
           </div>
           <div className='purchase-btns3'>
-          <PaypalSection amount="500"></PaypalSection>
+          <PaypalSection amount={services && services[2].price}></PaypalSection>
           </div>
       </div>
     </div>

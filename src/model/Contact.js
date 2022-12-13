@@ -104,17 +104,17 @@ export default class Contact {
             return null
         }
     }
-    static add = async (contact_id, email, phone, address) => {
+    static add = async (contact_id, name, email, phone, address) => {
         try{
             let action = '/contacts'
             let json = "null"
             let myURL = baseURL + action
             let headers = new Headers();
             headers.append('Content-Type', 'application/json');
-            const requestBody = {contact_id, email, phone, address}
+            const requestBody = {contact_id, email, name, phone, address}
             let response = await fetch(myURL, {
                 mode: 'cors',
-                method: 'PUT',
+                method: 'POST',
                 headers: headers,
                 body: JSON.stringify(requestBody)
             }).then(function(response){
@@ -122,7 +122,7 @@ export default class Contact {
             }).then(function(myJson) {
                 return myJson
             });
-            console.log("In Contact, resonse = ", response)
+            console.log("In Contact, add's resonse = ", response)
             
             return response
         }
