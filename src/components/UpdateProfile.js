@@ -17,13 +17,13 @@ export function UpdateProfile () {
 
     let currentUser = new CurrentUser()
     currentUser.parse()
-
+    const [editmode, seteditmode] = useState("")
     const [phone, setphone]=useState("")
     const [name, setname]=useState("")
     const [address, setaddress]=useState("")
 
     useEffect( () => {
-
+        seteditmode(false)
         console.log(currentUser.account_id)
         setname(currentUser.name)
         setphone(currentUser.phone)
@@ -35,24 +35,26 @@ export function UpdateProfile () {
         let response = await Account.update(currentUser.account_id, name, phone, address)
         console.log(response)
         response = await Account.getUserByAccountId(currentUser.account_id)
-
         Account.setUserSession(response)
+        seteditmode(false)
     }
-    // useEffect(
-    //     () =>{
-    //         axios.get(URL)
-    //         .then(res=> {
-    //             setdata(res.data)
-    //         }).catch(err=>console.error(err))
-    //     },[]
-    // )
+    const edit = async (e) => {
+        e.preventDefault();
+        if (editmode === false) {
+            seteditmode(true)
+        }
 
-
-    return( 
+        else {
+            seteditmode(false)
+        }
+        console.log(editmode)
+    }
+    return(
+    !editmode?
         <>
                 <section>
                         <div className="auth-form-container">
-                            <form className=".register-form" onSubmit={(e) => submit(e)}>
+                            <form className=".register-form" onSubmit={(e) => edit(e)}>
                                 <div className="upper-input"> 
                                     <div className="align-left">
                                         <label htmlFor ="phone">Phone</label>
@@ -64,11 +66,33 @@ export function UpdateProfile () {
                                     </div>
                                 </div>
                                 <div className="downward-input"> 
-                                    <button className="login-button btn-11" type="submit">Submit</button>
+                                    <button className="login-button btn-11" type="submit">Edit</button>
                                 </div>
                             </form>
                         </div>
                 </section>
         </>
+    :
+    <>
+    <section>
+            <div className="auth-form-container">
+                <form className=".register-form" onSubmit={(e) => submit(e)}>
+                    <div className="upper-input"> 
+                        <div className="align-left">
+                            <label htmlFor ="phone">Phone</label>
+                            <input onChange={(e)=>setphone(e.target.value)} value={phone} type='text' name="phone" />
+                            <label htmlFor="name">Name</label>
+                            <input onChange={(e)=>setname(e.target.value)} value={name} type='name' name="name"/>
+                            <label htmlFor ="address">Address</label>
+                            <input onChange={(e) =>setaddress(e.target.value)} value={address} type="address" name="address"/>
+                        </div>
+                    </div>
+                    <div className="downward-input"> 
+                        <button className="login-button btn-11" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+    </section>
+</>
     )
 }
