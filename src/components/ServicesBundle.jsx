@@ -9,7 +9,7 @@ import Service from "../model/Service";
 import { useNavigate } from "react-router-dom";
 import CurrentUser from '../model/CurrentUser'
 import { duration } from '@mui/material'
-
+//import { Link, useLocation } from 'react-router-dom'
 
 
 
@@ -36,7 +36,7 @@ function ServicesBundle() {
 
   },[]);
   
-  const handleLogin = () => {
+  const handleLogin = (e) => {
     navigate('/login')
   }
   console.log(services)
