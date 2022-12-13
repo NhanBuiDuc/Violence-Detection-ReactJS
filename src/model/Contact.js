@@ -2,7 +2,7 @@ const baseURL = 'https://violence-detection-backend.vercel.app'
 export default class Contact {
 
     static getByAcountId = async (account_id) => {
-        console.log("In contact, account_id = ", account_id)
+        // console.log("In contact, account_id = ", account_id)
         let action = '/contacts/account_id/'
         let myURL = baseURL + action
         let headers = new Headers();
@@ -41,7 +41,7 @@ export default class Contact {
             }).then(function(myJson) {
                 return myJson
             });
-            console.log("In Contact, resonse = ", response)
+            // console.log("In Contact, resonse = ", response)
             
             return response
         }
@@ -68,7 +68,7 @@ export default class Contact {
             }).then(function(myJson) {
                 return myJson
             });
-            console.log("In Contact, resonse = ", response)
+            // console.log("In Contact, resonse = ", response)
             
             return response
         }
@@ -95,7 +95,7 @@ export default class Contact {
             }).then(function(myJson) {
                 return myJson
             });
-            console.log("In Contact, resonse = ", response)
+            // console.log("In Contact, resonse = ", response)
             
             return response
         }
@@ -104,14 +104,14 @@ export default class Contact {
             return null
         }
     }
-    static add = async (contact_id, name, email, phone, address) => {
+    static add = async (account_id, name, email, phone, address) => {
         try{
             let action = '/contacts'
             let json = "null"
             let myURL = baseURL + action
             let headers = new Headers();
             headers.append('Content-Type', 'application/json');
-            const requestBody = {contact_id, email, name, phone, address}
+            const requestBody = {account_id, email, name, phone, address}
             let response = await fetch(myURL, {
                 mode: 'cors',
                 method: 'POST',
@@ -123,6 +123,32 @@ export default class Contact {
                 return myJson
             });
             console.log("In Contact, add's resonse = ", response)
+            
+            return response
+        }
+        catch(err){
+
+            return null
+        }
+    }
+    static delete = async (contact_id) => {
+        try{
+            let action = '/contacts/delete/contact_id'
+            let myURL = baseURL + action
+            let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+            const requestBody = {contact_id}
+            let response = await fetch(myURL, {
+                mode: 'cors',
+                method: 'DELETE',
+                headers: headers,
+                body: JSON.stringify(requestBody)
+            }).then(function(response){
+                return response.json();
+            }).then(function(myJson) {
+                return myJson
+            });
+            console.log("In Contact, delete's resonse = ", response)
             
             return response
         }

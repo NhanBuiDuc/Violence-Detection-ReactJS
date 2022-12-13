@@ -1,13 +1,18 @@
-import { Box, useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "./theme";
+
+import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
+import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
+import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "./Header.jsx";
 import CurrentUser from '../model/CurrentUser'
 import Contact from "../model/Contact";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "./Button";
 import { useCallback } from "react";
-
+import { Update } from "@mui/icons-material";
+import { GridCellEditStopReasons } from "@mui/x-data-grid";
 async function fetchdata (account_id){
     let data = await Contact.getByAcountId(account_id)
     return (
@@ -15,6 +20,21 @@ async function fetchdata (account_id){
     )
 }
 
+
+
+// const renderAddButton = (params) => {
+//   return (
+//       <strong>
+//           <Button
+//             buttonStyle='btn--primary'
+//             buttonSize='btn--medium'
+//             link='/addcontact'
+//           >
+//               Add
+//           </Button>
+//       </strong>
+//   )
+// }
 
 const ContactList = () => {
   const currentuser = new CurrentUser()
@@ -24,7 +44,9 @@ const ContactList = () => {
     fetchdata(currentuser.account_id).then(function(result){
       setdata(result)
       return result})
+
   }, [])
+
   const renderDetailsButton = (params) => {
     return (
         <strong>
@@ -34,10 +56,11 @@ const ContactList = () => {
         </strong>
     )
 }
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [selectedRows, setSelectedRows] = useState([]);
-  var columns = [
+  const columns = [
     { field: "contact_id", headerName: "ID" },
     {
       field: "address",
@@ -46,6 +69,13 @@ const ContactList = () => {
       cellClassName: "name-column--cell",
       editable: true,
     },
+    // {
+    //   field: "address",
+    //   headerName: "Address",
+    //   type: "number",
+    //   headerAlign: "left",
+    //   align: "left",
+    // },
     {
       field: "phone",
       headerName: "Phone Number",
@@ -62,43 +92,15 @@ const ContactList = () => {
       field: "edit",
       headerName:"Edit",
       flex:1,
-      renderCell: (params)=>{
-        return (
-          <Button
-            onClick={(e) => onButtonClick(e, params.row)}
-            variant="contained"
-          >
-            Edit
-          </Button>
-        );
-      },
+      renderCell: renderDetailsButton,
     },
 ];
-
-const handleRowEditCommit = useCallback(
-  (params) => {
-      const id = params.id;
-      const key = params.field;
-      const value = params.value; },
-  []
-);
-
-const onButtonClick = async (e, row) => {
-  e.preventDefault();
-  let response = await Contact.update(row.contact_id, row.email, row.phone, row.address)
-        console.log(response)
-        response = await Contact.getByAcountId(row.contact_id)
-};
-
-
-
   return (
     <Box m="20px">
       <Header title="TEAM" subtitle="Managing the Team Members" />
       <Button
             buttonStyle='btn--primary'
             buttonSize='btn--medium'
-            link='/addcontact'
           >
               Add
           </Button>
@@ -136,8 +138,15 @@ const onButtonClick = async (e, row) => {
         rows={data} 
         columns={columns} 
         experimentalFeatures={{ newEditingApi: true }}
-        onCellEditCommit={handleRowEditCommit}
-        />          
+        onSelectionModelChange={(ids) => {
+          const selectedIDs = new Set(ids);
+          const selectedRows = data.rows.filter((row) =>
+            selectedIDs.has(row.id),
+          );
+
+          setSelectedRows(selectedRows);
+        }}
+        />
       </Box>
     </Box>
   );
