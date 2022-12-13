@@ -47,11 +47,12 @@ export function Register (props) {
                 errRef.current.focus();
             }
             else{
-                let response = Account.register(email, password, name, phone, address)
+                let response = await Account.register(email, password, name, phone, address)
                 console.log("In Register ", response)
                 if(response.status === "200"){
                     console.log("In Register Status 200: ", response)
-                    setErrMsg("Successfully Loggin")
+                    alert("Account has been created")
+                    setErrMsg("Successfully Registeration")
                     navigate("/login")
                 }
                 else if(response.status === "404"){
@@ -96,10 +97,6 @@ export function Register (props) {
     const handleLoginRedirect = () => {
         navigate("/login")
     }
-    const handleSignUp=()=>{
-        alert("Account has been created")
-        navigate("/login")
-    }
     return( 
         <>
                 <section>
@@ -127,7 +124,7 @@ export function Register (props) {
                                     </div>
                                 </div>
                                 <div className="downward-input"> 
-                                    <button className="login-button btn-11" type="submit" onClick={handleSignUp}>Sign Up</button>
+                                    <button className="login-button btn-11" type="submit">Sign Up</button>
                                 </div>
                             </form>
                             <label className="register-label"> Already have an account? </label>

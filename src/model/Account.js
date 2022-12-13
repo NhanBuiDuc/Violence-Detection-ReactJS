@@ -36,7 +36,6 @@ export default class Account {
     static register = async (email, password, name, phone, address) => {
         try{
             let action = '/register'
-            let json = "null"
             let myURL = baseURL + action
 
             let headers = new Headers();
