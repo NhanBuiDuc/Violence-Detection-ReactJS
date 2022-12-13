@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect} from "react";
 import {Navigate, useNavigate } from 'react-router-dom'
 import '../App.css'
-import '../components/pages/css/register.css'
+import './Profile.css'
 import Profile from "./pages/Profile";
 import CurrentUser from "../model/CurrentUser";
 import Account from "../model/Account";
@@ -56,7 +56,7 @@ export function UserProfile () {
         <>
                 <section>
                         <div className="auth-form-container">
-                            <form className=".register-form" onSubmit={(e) => edit(e)}>
+                            <form className="register-form" onSubmit={(e) => edit(e)}>
                                 <div className="upper-input"> 
                                     <div className="align-left">
                                         <label htmlFor="email">Email</label>
@@ -80,9 +80,11 @@ export function UserProfile () {
     <>
     <section>
             <div className="auth-form-container">
-                <form className=".register-form" onSubmit={(e) => submit(e)}>
+                <form className="register-form" onSubmit={(e) => submit(e)}>
                     <div className="upper-input"> 
                         <div className="align-left">
+                            <label htmlFor="email">Email</label>
+                            <input value={email} readOnly='true' type='text' name="email" />
                             <label htmlFor ="phone">Phone</label>
                             <input onChange={(e)=>setphone(e.target.value)} value={phone} type='text' name="phone" />
                             <label htmlFor="name">Name</label>

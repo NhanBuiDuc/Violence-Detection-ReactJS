@@ -1,37 +1,93 @@
-.chatOnlineFriend {
+.messenger {
+    height: calc(100vh - 70px);
+    display: flex;
+  }
+  
+  .chatMenu {
+    flex: 3.5;
+  }
+  
+  .chatMenuInput {
+    width: 90%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid gray;
+  }
+  
+  .chatBox {
+    min-width: 50rem;
+  }
+  
+  .chatBoxWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  
+  .chatBoxTop {
+    height: 100%;
+    overflow-y: scroll;
+    padding-right: 10px;
+  }
+  
+  .chatBoxBottom {
+    margin-top: 5px;
     display: flex;
     align-items: center;
-    font-weight: 500;
-    cursor: pointer;
-    margin-top: 10px;
+    justify-content: space-between;
   }
   
-  .chatOnlineImgContainer {
-    position: relative;
-    margin-right: 10px;
+  .chatMessageInput {
+    width: 80%;
+    height: 90px;
+    padding: 10px;
   }
   
-  .chatOnlineImg {
-    width: 40px;
+  .chatSubmitButton {
+    width: 70px;
     height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: teal;
+    color: white;
   }
   
-  .chatOnlineBadge {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: limegreen;
+  .chatOnline {
+    flex: 3;
+  }
+  
+  .chatMenuWrapper,
+  .chatBoxWrapper,
+  .chatOnlineWrapper {
+    padding: 10px;
+    height: 100%;
+  }
+  
+  .noConversationText {
     position: absolute;
-    top: 2px;
-    right: 2px;
+    top: 10%;
+    font-size: 50px;
+    color: rgb(224, 220, 220);
+    cursor: default;
   }
   
   @media screen and (max-width: 768px) {
-    .chatOnlineName {
+    .chatMenu {
+      flex: 1;
+    }
+  
+    .chatMenuInput {
       display: none;
+    }
+  
+    .chatBox{
+      flex: 10;
+    }
+  
+    .chatOnline{
+      flex: 1px;
     }
   }
   
