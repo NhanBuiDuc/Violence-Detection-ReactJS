@@ -25,15 +25,9 @@ const ContactList = () => {
       setdata(result)
       return result})
   }, [])
-  const renderDetailsButton = (params) => {
-    return (
-        <strong>
-          <Button buttonStyle='btn--update'link='/updatecontact'>
-            Edit
-            </Button>
-        </strong>
-    )
-}
+
+
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [selectedRows, setSelectedRows] = useState([]);
@@ -65,7 +59,7 @@ const ContactList = () => {
       renderCell: (params)=>{
         return (
           <Button
-            onClick={(e) => onButtonClick(e, params.row)}
+            onClick={(e) => onButtonEditClick(e, params.row)}
             variant="contained"
           >
             Edit
@@ -73,8 +67,29 @@ const ContactList = () => {
         );
       },
     },
+    {
+      field: "delete",
+      headerName:"delete",
+      flex:1,
+      renderCell: (params)=>{
+        return (
+          <Button
+            onClick={(e) => onButtonDeleteClick(e, params.row)}
+            variant="contained"
+          >
+            Delete
+          </Button>
+        );
+      },
+    },
 ];
 
+const onButtonDeleteClick = async (e, row) => {
+  e.stopPropagation();
+  let response = await Contact.delete(row.contact_id)
+        console.log(response)
+        response = await Contact.getByAcountId(row.contact_id)
+}
 const handleRowEditCommit = useCallback(
   (params) => {
       const id = params.id;
@@ -83,7 +98,7 @@ const handleRowEditCommit = useCallback(
   []
 );
 
-const onButtonClick = async (e, row) => {
+const onButtonEditClick = async (e, row) => {
   e.preventDefault();
   let response = await Contact.update(row.contact_id, row.email, row.phone, row.address)
         console.log(response)
