@@ -7,7 +7,6 @@ import CurrentUser from "../model/CurrentUser";
 import Account from "../model/Account";
 import axios, { Axios } from "axios";
 import { ConstructionOutlined } from "@mui/icons-material";
-import Demo from "./CameraCard";
 // var baseURL = 'https://localhost:8000/'
 var baseURL = 'https://c9b80c4b-4436-4358-8ab8-2bc97afbc640.mock.pstmn.io'
 
@@ -79,7 +78,6 @@ export function UserProfile () {
                             {/* <form className="subScription">
                                 <p>Hell1o</p>
                             </form> */}
-                            <Demo></Demo>
                         </div>
                         
                 </section>
@@ -108,7 +106,6 @@ export function UserProfile () {
                 {/* <form className="subScription">
                                 <p>Hello1</p>
                             </form> */}
-                <Demo></Demo>
             </div>
     </section>
 </>
