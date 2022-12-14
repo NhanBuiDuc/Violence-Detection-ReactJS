@@ -23,20 +23,13 @@ function Log() {
         setXD(xd)
         return response
     }
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //       setSeconds(seconds => seconds + 1);
-    //       console.log(seconds)
-    //     }, 1000);
-    //     return () => clearInterval(interval);
-    //   }, []);
-    
+
     useEffect(() =>{
         const interval = setInterval( async () => {
             let response = await VD.vd_xd(1)
             // console.log("Use Effect xd", response)
-            setXD(xd)
-            
+            setXD(response)
+            console.log(xd)
             return response
           }, 10000);
           return () => clearInterval(interval);
