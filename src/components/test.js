@@ -6,12 +6,13 @@ import Message from './LogChat'
 
 function Asd() {
 const [count, setcount] = useState(0)
-
+const ex = ["1", "2","3","4"]
 useEffect(() => {
     const interval = setInterval(() => {
-      setcount(count => count + 1);
-    }, 5000);
-    return () => clearInterval(interval);
+    setcount(count => count + 1);
+    }, 1000);
+    if (interval >= 5) { 
+    return() => clearInterval(interval);}
   }, []);
 
   return (
@@ -20,7 +21,7 @@ useEffect(() => {
         <div className='chatBox'>
             <div className="chatBoxWrapper">
                 <div className="chatBoxTop">
-                {Array(count).fill(true).map((_, i) => <Message message="asd" key={i} />)}                </div>
+                {Array(ex.length).fill(true).map((_,i) => <Message message={ex[i]} key={i} />)}                </div>
                 <div className="chatBoxBottom">
                     <button className='chatSubmitButton'>Send</button>
                 </div>
