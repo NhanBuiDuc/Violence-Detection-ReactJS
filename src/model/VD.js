@@ -1,4 +1,4 @@
-const baseURL = 'http://removeallblocksite.sw:8000'
+const baseURL = 'http://localhost:8000'
 export default class VD {
     static vd_start = async (id) => {
         try{
@@ -44,8 +44,6 @@ export default class VD {
         }).then(function(myJson) {
             return myJson
         });
-        console.log("In VD_XD, resonse = ", response)
-
         return response
     }
 }
