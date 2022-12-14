@@ -23,9 +23,23 @@ function Log() {
         setXD(xd)
         return response
     }
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //       setSeconds(seconds => seconds + 1);
+    //       console.log(seconds)
+    //     }, 1000);
+    //     return () => clearInterval(interval);
+    //   }, []);
     
     useEffect(() =>{
-        // start()
+        const interval = setInterval( async () => {
+            let response = await VD.vd_xd(1)
+            // console.log("Use Effect xd", response)
+            setXD(xd)
+            
+            return response
+          }, 10000);
+          return () => clearInterval(interval);
     },[])
 
     useEffect(() =>{
@@ -34,8 +48,16 @@ function Log() {
         console.log(xd)
     })
     useEffect(() =>{
+        let toText = "Anomally acction detected with cofidence rate " + xd.score[0] + "% at the time " + xd.end
+            setMessage(toText)
+            console.log(message)
+            console.log(toText)
+    },[xd])
+
+    useEffect(() =>{
         setMessage("Violennce-Detected at : 6:00:00, confidence: 70%, anomaly event: True")
     },[xd])
+
   return (
 
     <div className='messenger'>
