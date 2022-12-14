@@ -28,22 +28,28 @@ export default class VD {
         }
     }
     static vd_xd = async (id) => {
-        let action = '/xd'
-        let json = "null"
-        let myURL = baseURL + action
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        const loginBody = {id}
-        let response = await fetch(myURL, {
-            mode: 'cors',
-            method: 'POST',
-            headers: headers,
-            body: JSON.stringify(loginBody)
-        }).then(function(response){
-            return response.json();
-        }).then(function(myJson) {
-            return myJson
-        });
-        return response
+        try{
+            let action = '/xd'
+            let json = "null"
+            let myURL = baseURL + action
+            let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+            const loginBody = {id}
+            let response = await fetch(myURL, {
+                mode: 'cors',
+                method: 'POST',
+                headers: headers,
+                body: JSON.stringify(loginBody)
+            }).then(function(response){
+                return response.json();
+            }).then(function(myJson) {
+                return myJson
+            });
+            return response
+        }
+        
+        catch(err){
+
+        }
     }
 }
