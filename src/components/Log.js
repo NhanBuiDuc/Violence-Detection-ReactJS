@@ -14,19 +14,20 @@ function Log() {
 
 
     const[xd, setXD] = useState("")
+    const[mess, setmess] = useState("")
     useEffect(() =>{
         // start()
     },[])
 
     useEffect(() =>{
 
-        const xd = async () => {
+        const xdfunction = async () => {
             let response = await VD.vd_xd(1)
             console.log("Use Effect xd", response)
             setXD(xd)
             return response
         }
-        xd()
+        xdfunction()
         console.log(xd)
     })
     
@@ -36,14 +37,7 @@ function Log() {
         <div className='chatBox'>
             <div className="chatBoxWrapper">
                 <div className="chatBoxTop">
-                    <Message own={true}/>
-                    <Message/>
-                    <Message own={true}/>
-                    <Message/><Message own={true}/>
-                    <Message/><Message own={true}/>
-                    <Message/><Message own={true}/>
-                    <Message/><Message own={true}/>
-                    <Message/>
+                    <Message message = {xd} own={true}/>
                 </div>
                 <div className="chatBoxBottom">
                     <button className='chatSubmitButton'>Send</button>
