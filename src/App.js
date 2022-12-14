@@ -14,6 +14,8 @@ import { AddContact } from './components/AddContact';
 import { UserProfile } from './components/Profile';
 import Log from './components/Log';
 import Demo from './components/CameraCard';
+import Asd from './components/test';
+
 function App() {
 
   return (
@@ -33,6 +35,7 @@ function App() {
           <Route path='/addcontact' exact element={<AddContact/>} />
           <Route path='/log' exact element={<Log/>} />
           <Route path='/demo' exact element={<Demo/>}/>
+          <Route path='/test' exact element={<Asd/>}/>
         </Routes>
       </Router>
 
