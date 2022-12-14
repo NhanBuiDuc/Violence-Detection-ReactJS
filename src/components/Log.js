@@ -10,40 +10,40 @@ const start = () => {
     return response
 }
 
+
 function Log() {
 
 
     const[xd, setXD] = useState("")
+    const[message, setMessage] = useState("")
+
+    const xd_function = async () => {
+        let response = await VD.vd_xd(1)
+        console.log("Use Effect xd", response)
+        setXD(xd)
+        return response
+    }
+    
     useEffect(() =>{
         // start()
     },[])
 
     useEffect(() =>{
 
-        const xd = async () => {
-            let response = await VD.vd_xd(1)
-            console.log("Use Effect xd", response)
-            setXD(xd)
-            return response
-        }
-        xd()
+        xd_function()
         console.log(xd)
     })
-    
+    useEffect(() =>{
+        setMessage("Violennce-Detected at : 6:00:00, confidence: 70%, anomaly event: True")
+    },[xd])
   return (
+
     <div className='messenger'>
 
         <div className='chatBox'>
             <div className="chatBoxWrapper">
                 <div className="chatBoxTop">
-                    <Message own={true}/>
-                    <Message/>
-                    <Message own={true}/>
-                    <Message/><Message own={true}/>
-                    <Message/><Message own={true}/>
-                    <Message/><Message own={true}/>
-                    <Message/><Message own={true}/>
-                    <Message/>
+                    <Message message={message} own={true}/>
                 </div>
                 <div className="chatBoxBottom">
                     <button className='chatSubmitButton'>Send</button>
