@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:8000'
+const baseURL = 'http://removeallblocksite.sw:8000'
 export default class VD {
     static vd_start = async (id) => {
         try{
