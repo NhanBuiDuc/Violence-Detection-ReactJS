@@ -59,11 +59,11 @@ return (
                             Services
                         </Link>
                     </li>
-                    <li className='nav-item'>
+                    {/* <li className='nav-item'>
                         <Link to='/stream' className='App' onClick={closeMobileMenu}>
                             Cameras
                         </Link>
-                    </li>
+                    </li> */}
                     {/* <li className='nav-item'>
                         <Link to='/stream' className='App' onClick={closeMobileMenu}>
                             Cameras
@@ -77,8 +77,10 @@ return (
                         </Link>}
                     </li>
                 </ul>
+                {!email? <Button buttonStyle='btn--outline'link='/login'>Contact</Button> : <Button buttonStyle='btn--outline' link='/contact'>Contact</Button>}
+                {!email? <Button buttonStyle='btn--outline'link='/login'>Profile</Button> : <Button buttonStyle='btn--outline' link='/profile'>Profile</Button>}
                 {!email? <Button buttonStyle='btn--outline'link='/login'>LOG IN</Button> : <button onClick={logOut}>LOG OUT</button>}
-                {!email? <button onClick={logOut}></button>:<Button buttonStyle='btn--outline'link='/profile'>Profile</Button> }
+                {/* {!email? <button onClick={logOut}></button>:<Button buttonStyle='btn--outline'link='/profile'>Profile</Button> } */}
             </div> 
         </nav>
     </>

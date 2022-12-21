@@ -79,7 +79,6 @@ export function UserProfile () {
                             {/* <form className="subScription">
                                 <p>Hell1o</p>
                             </form> */}
-                            <Demo></Demo>
                         </div>
                         
                 </section>
@@ -108,7 +107,6 @@ export function UserProfile () {
                 {/* <form className="subScription">
                                 <p>Hello1</p>
                             </form> */}
-                <Demo></Demo>
             </div>
     </section>
 </>
