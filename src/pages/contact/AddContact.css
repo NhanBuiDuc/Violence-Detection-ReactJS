@@ -63,4 +63,13 @@
     background-color: antiquewhite;
   }
   
-  
+  .addContact-flex {
+    display: flex;
+    border-style: dotted;
+    background: aliceblue;
+    border: black;
+  }
+  .addContact-form {
+      margin: 5rem;
+      /* background-image: url("https://amymhaddad.s3.amazonaws.com/morocco-blue.png") */
+  }

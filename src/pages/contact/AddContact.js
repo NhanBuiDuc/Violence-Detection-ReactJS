@@ -84,70 +84,74 @@ export function AddContact(props) {
         <div className="list">
           <Sidebar />
           <div className="listContainer">
-            <div></div>
-            <Header
-              title="Contacts"
-              subtitle="Managing Your Emergency Contacts"
-            />
-            {/* <Image src = {contact_background}/> */}
+              <Header
+                title="Contacts"
+                subtitle="Managing Your Emergency Contacts"
+              />
+              <div className="addContact-flex">
+                {/* <Image src = {contact_background}/> */}
 
-            <p
-              className={errMsg ? "errmsg" : "offscreen"}
-              aria-live="assertive"
-            >
-              {errMsg}
-            </p>
-            <div
-              className="auth-form-container"
-              backgroundImage={contact_background}
-            >
-              <form className=".register-form" onSubmit={handleSubmit}>
-                <div className="upper-input">
-                  <div className="align-left">
-                    <label htmlFor="email">Email</label>
-                    <input
-                      value={email}
-                      required
-                      onChange={(e) => setEmail(e.target.value)}
-                      type="email"
-                      placeholder="contactemail@gmail.com"
-                      id="email"
-                      name="email"
-                    />
-                    <label htmlFor="text">Full Name</label>
-                    <input
-                      value={name}
-                      required
-                      onChange={(e) => setName(e.target.value)}
-                      type="text"
-                    />
-                  </div>
+                <p
+                  className={errMsg ? "errmsg" : "offscreen"}
+                  aria-live="assertive"
+                >
+                  {errMsg}
+                </p>
+                <div className="addContact-form">
+                  <div >
+                    <form className=".register-form" onSubmit={handleSubmit}>
+                      <div className="upper-input">
+                        <div className="align-left">
+                          <label htmlFor="email">Email</label>
+                          <input
+                            value={email}
+                            required
+                            onChange={(e) => setEmail(e.target.value)}
+                            type="email"
+                            placeholder="contactemail@gmail.com"
+                            id="email"
+                            name="email"
+                          />
+                          <label htmlFor="text">Full Name</label>
+                          <input
+                            value={name}
+                            required
+                            onChange={(e) => setName(e.target.value)}
+                            type="text"
+                          />
+                        </div>
 
-                  <div className="align-right">
-                    <label htmlFor="text">Phone</label>
-                    <input
-                      value={phone}
-                      required
-                      onChange={(e) => setPhone(e.target.value)}
-                      type="text"
-                    />
-                    <label htmlFor="text">Address</label>
-                    <input
-                      value={address}
-                      required
-                      onChange={(e) => setAddress(e.target.value)}
-                      type="text"
-                    />
+                        <div className="align-right">
+                          <label htmlFor="text">Phone</label>
+                          <input
+                            value={phone}
+                            required
+                            onChange={(e) => setPhone(e.target.value)}
+                            type="text"
+                          />
+                          <label htmlFor="text">Address</label>
+                          <input
+                            value={address}
+                            required
+                            onChange={(e) => setAddress(e.target.value)}
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                      <div className="downward-input">
+                        <button className="login-button btn-11" type="submit">
+                          Add
+                        </button>
+                      </div>
+                    </form>
                   </div>
                 </div>
-                <div className="downward-input">
-                  <button className="login-button btn-11" type="submit">
-                    Add
-                  </button>
+                <div className="addContact-image">
+                  <Image src={contact_background} />
                 </div>
-              </form>
+              </div>
             </div>
-          </div>
+
         </div>
       </div>
     </div>
