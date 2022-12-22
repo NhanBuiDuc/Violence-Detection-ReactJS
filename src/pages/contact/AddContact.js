@@ -1,10 +1,9 @@
 import React, {useState, useRef, useEffect} from "react";
 import {useNavigate } from 'react-router-dom'
-import '../..//src/components/pages/css/register.css'
-import '../App.css'
-import CurrentUser from "../model/CurrentUser";
-import Contact from "../model/Contact";
-// var baseURL = 'https://localhost:8000/'
+// import '../..//src/components/pages/css/register.css'
+import './AddContact.css'
+import CurrentUser from "../../model/CurrentUser";
+import Contact from "../../model/Contact";
 var baseURL = 'https://c9b80c4b-4436-4358-8ab8-2bc97afbc640.mock.pstmn.io'
 
 var controller = '/register'

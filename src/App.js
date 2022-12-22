@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from './components/Navbar';
 import './App.css';
 import Home from './components/pages/Home';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -7,15 +6,13 @@ import Login from './components/pages/Login';
 import Cameras from './components/pages/Cameras';
 import Services from './components/pages/Services';
 import Profile from './components/pages/Profile';
-import { Register } from './components/pages/Register';
+import { Register } from './pages/register/Register';
 import Streaming from './components/pages/Streaming';
-import ContactList from './components/Contact';
-import { AddContact } from './components/AddContact';
-import { UserProfile } from './components/Profile';
+import ContactList from './pages/contact/Contact';
+import { AddContact } from './pages/contact/AddContact';
 import Log from './components/Log';
 import Demo from './components/CameraCard';
 import Asd from './components/test';
-import Admin from './Admin'
 import Main from "./pages/home/Home";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
@@ -29,7 +26,7 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           <Route path='/' exact element={<Home/>} />
           <Route path='/Login' exact element={<Login/>} />

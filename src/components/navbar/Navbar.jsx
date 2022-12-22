@@ -9,7 +9,7 @@ import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
 
-const Navbar = () => {
+const NavbarTest = () => {
   const { dispatch } = useContext(DarkModeContext);
 
   return (
@@ -57,4 +57,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarTest;

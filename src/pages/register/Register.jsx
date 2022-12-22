@@ -1,10 +1,12 @@
 import React, {useState, useRef, useEffect} from "react";
 import {useNavigate } from 'react-router-dom'
 import '../../App.css'
-import './css/register.css'
-
+import './register.css'
+import { Image } from "@mantine/core";
 import CurrentUser from "../../model/CurrentUser";
 import Account from "../../model/Account";
+import rocketImage from "../../images/rocket.png"
+import Navbar from "../../components/Navbar";
 // var baseURL = 'https://localhost:8000/'
 var baseURL = 'https://c9b80c4b-4436-4358-8ab8-2bc97afbc640.mock.pstmn.io'
 
@@ -99,7 +101,11 @@ export function Register (props) {
     }
     return( 
         <>
+                <Navbar/>
                 <section>
+                    <div className="register-image">
+                    <Image src = {rocketImage}/>
+                    </div>
                     <p ref = {errRef} className = { errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                         <div className="auth-form-container">
                             <form className=".register-form" onSubmit={handleSubmit}>

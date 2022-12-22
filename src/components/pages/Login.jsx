@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../App.css";
 import "./css/login.css";
-import Register from "./Register";
+import Register from "../../pages/register/Register";
 import PaypalSection from "../PaypalSection";
 import CurrentUser from "../../model/CurrentUser";
 import Account from "../../model/Account";
