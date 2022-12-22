@@ -10,6 +10,7 @@ import Sidebar from "../../components/sidebar/Sidebar"
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom'
+import "./Contact.css"
 async function fetchdata (account_id){
     let data = await Contact.getByAcountId(account_id)
     return (

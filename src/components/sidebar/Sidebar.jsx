@@ -20,9 +20,9 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="top">
-        <Link to="/manage" style={{ textDecoration: "none" }}>
-          <span className="logo">lamadmin</span>
-        </Link>
+      <Link to='/' className='navbar-logo'>
+        <i className='fab fa-typo3'/>
+      </Link>
       </div>
       <hr />
       <div className="center">
@@ -86,16 +86,7 @@ const Sidebar = () => {
           </li>
         </ul>
       </div>
-      <div className="bottom">
-        <div
-          className="colorOption"
-          onClick={() => dispatch({ type: "LIGHT" })}
-        ></div>
-        <div
-          className="colorOption"
-          onClick={() => dispatch({ type: "DARK" })}
-        ></div>
-      </div>
+    
     </div>
   );
 };

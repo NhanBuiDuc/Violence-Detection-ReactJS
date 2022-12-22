@@ -43,8 +43,7 @@ return (
         <nav className='navbar'>
             <div className='navbar-container'>
                 <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-                    Group 5 
-                    <i className='fab fa-typo3' />
+                    <i className='fab fa-typo3'/>
                 </Link>
                 <div className='menu-icon' onClick={handleClick}> 
                     <i className={click ? 'fas fa-times' :  'fas fa-bars'} />

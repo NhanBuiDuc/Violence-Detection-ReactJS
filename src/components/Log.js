@@ -33,14 +33,10 @@ function Log() {
         return response
     }
 
-
     useEffect(() => {
         const interval = setInterval(() => {
-            setoldcount(oldcount => oldcount + 1);
             
-            let response = fetchData()
-            setXD(response)
-            console.log(xd)
+            fetchData()
 
         }, 5000);
         return () => clearInterval(interval);
@@ -58,7 +54,6 @@ function Log() {
                 <div className="chatBoxTop">
                 {Array(oldcount).fill(true).map((_, i) => <Message message={xd && xd} key={i} />)}                </div>
                 <div className="chatBoxBottom">
-                    <button className='chatSubmitButton'>Send</button>
                 </div>
             </div>
         </div>

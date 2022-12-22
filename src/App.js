@@ -13,7 +13,7 @@ import { AddContact } from './pages/contact/AddContact';
 import Log from './components/Log';
 import Demo from './components/CameraCard';
 import Asd from './components/test';
-import Main from "./pages/home/Home";
+import Main from "./pages/home/Main";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
@@ -53,7 +53,7 @@ function App() {
               />
             </Route>
             <Route path="products">
-              <Route index element={<List />} />
+              <Route index element={<List/>} />
               <Route path=":productId" element={<Single />} />
               <Route
                 path="new"
