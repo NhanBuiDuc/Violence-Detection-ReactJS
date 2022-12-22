@@ -1,14 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../App.css";
-import "./css/login.css";
-import Register from "../../pages/register/Register";
-import PaypalSection from "../PaypalSection";
-import CurrentUser from "../../model/CurrentUser";
+import "./login.css";
 import Account from "../../model/Account";
-import Subcription from "../../model/Subcription";
-import Service from "../../model/Service";
-// var baseURL = 'https://localhost:8000/'
+import Navbar from "../../components/Navbar";
+import rocketImage from "../../images/rocket.png"
+import { Image } from "@mantine/core";
 
 export default function Login(props) {
   const [email, setEmail] = useState("");
@@ -76,7 +72,12 @@ export default function Login(props) {
   };
   return (
     <>
-      <section>
+      <Navbar/>
+      <section className="flex">
+      <div className="flex-left">
+        <Image src = {rocketImage}/>
+      </div>
+      <div className="login flex-right">
         <p
           ref={errRef}
           className={errMsg ? "errmsg" : "offscreen"}
@@ -117,6 +118,7 @@ export default function Login(props) {
             Register
           </button>
         </div>
+      </div>
       </section>
     </>
   );

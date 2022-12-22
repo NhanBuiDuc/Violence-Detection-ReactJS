@@ -194,4 +194,6 @@ label.register-label {
   .btn-7 span:hover:after {
     width: 100%;
   }
-  
+  .login.flex-right {
+    margin-left: 5rem;
+  }

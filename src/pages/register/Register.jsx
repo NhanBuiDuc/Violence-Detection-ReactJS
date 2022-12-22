@@ -1,9 +1,8 @@
 import React, {useState, useRef, useEffect} from "react";
 import {useNavigate } from 'react-router-dom'
-import '../../App.css'
+// import '../../App.css'
 import './register.css'
 import { Image } from "@mantine/core";
-import CurrentUser from "../../model/CurrentUser";
 import Account from "../../model/Account";
 import rocketImage from "../../images/rocket.png"
 import Navbar from "../../components/Navbar";
@@ -102,40 +101,52 @@ export function Register (props) {
     return( 
         <>
                 <Navbar/>
-                <section>
-                    <div className="register-image">
+                <section className="flex">
+
+                    <div className="flex-left">
                     <Image src = {rocketImage}/>
                     </div>
-                    <p ref = {errRef} className = { errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                        <div className="auth-form-container">
-                            <form className=".register-form" onSubmit={handleSubmit}>
-                                <div className="upper-input"> 
-                                    <div className="align-left">
-                                        <label htmlFor ="email">Email</label>
-                                        <input value={email} required onChange={(e) => setEmail(e.target.value)} type="email" placeholder="youremail@gmail.com" id="email" name="email"/>
-                                        <label htmlFor="password">Password</label>
-                                        <input value={password} required onChange={(e)=>setPassword(e.target.value)} type="password" placeholder="******" id="password" name="password"/>
-                                        <label htmlFor ="password">Confirm Password</label>
-                                        <input value={confirmPassword} required onChange={(e) => setConfirmPassword(e.target.value)} type="password" placeholder="******" id="confirmPassword" name="confirmPassword"/>
-                                    </div>
-                                
-                                    <div className="align-right">
-                                        <label htmlFor="text">Full Name</label>
-                                        <input value={name} required onChange={(e) => setName(e.target.value)} type="text"/>
-                                        <label htmlFor="text">Phone</label>
-                                        <input value={phone} required onChange={(e) => setPhone(e.target.value)} type="text"/>
-                                        <label htmlFor="text">Address</label>
-                                        <input value={address} required onChange={(e) => setAddress(e.target.value)} type="text"/>
+
+                    <div className="flex-right">
+                    <div className="right-upper">
+                        <h1>SIGN UP</h1>
+                    </div>
+                    <div className="right-downward">
+
+                            <p ref = {errRef} className = { errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                                {/* <div className="auth-form-container"> */}
+                                <div>
+                                    <form className=".register-form" onSubmit={handleSubmit}>
+                                        <div className="upper-input"> 
+                                            <div className="align-left">
+                                                <label htmlFor ="email">Email</label>
+                                                <input value={email} required onChange={(e) => setEmail(e.target.value)} type="email" placeholder="youremail@gmail.com" id="email" name="email"/>
+                                                <label htmlFor="password">Password</label>
+                                                <input value={password} required onChange={(e)=>setPassword(e.target.value)} type="password" placeholder="******" id="password" name="password"/>
+                                                <label htmlFor ="password">Confirm Password</label>
+                                                <input value={confirmPassword} required onChange={(e) => setConfirmPassword(e.target.value)} type="password" placeholder="******" id="confirmPassword" name="confirmPassword"/>
+                                            </div>
                                         
-                                    </div>
+                                            <div className="align-right">
+                                                <label htmlFor="text">Full Name</label>
+                                                <input value={name} required onChange={(e) => setName(e.target.value)} type="text"/>
+                                                <label htmlFor="text">Phone</label>
+                                                <input value={phone} required onChange={(e) => setPhone(e.target.value)} type="text"/>
+                                                <label htmlFor="text">Address</label>
+                                                <input value={address} required onChange={(e) => setAddress(e.target.value)} type="text"/>
+                                                
+                                            </div>
+                                        </div>
+                                        <div className="downward-input"> 
+                                            <button className="login-button btn-11" type="submit">Sign Up</button>
+                                            <label > Already have an account? </label>
+                                            <button className="login-button btn-7" onClick={handleLoginRedirect}> BACK TO LOGIN</button>
+                                        </div>
+                                    </form>
+                                    
                                 </div>
-                                <div className="downward-input"> 
-                                    <button className="login-button btn-11" type="submit">Sign Up</button>
-                                </div>
-                            </form>
-                            <label className="register-label"> Already have an account? </label>
-                            <button className="login-button btn-7" onClick={handleLoginRedirect}> BACK TO LOGIN</button>
-                        </div>
+                            </div>
+                    </div> 
                 </section>
         </>
     )

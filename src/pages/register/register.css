@@ -13,12 +13,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.auth-form-container, .login-form {
-  display: flex;
-  flex-direction:column;
-  align-items: center;
-  margin: left 20cm;
-}
 
 .profile-form-container{
   text-align: center;
@@ -27,7 +21,7 @@ code {
   align-items: left;
   justify-content: center;
   color: white;
-  background-image: linear-gradient(79deg, rgb(33, 51, 100),rgb(133, 155, 228),rgb(116, 234, 238));
+  /* background-image: linear-gradient(79deg, rgb(33, 51, 100),rgb(133, 155, 228),rgb(116, 234, 238)); */
 }
 
 .subScription{
@@ -52,11 +46,14 @@ form.\.register-form {
 
 }
 
+input {
+  background: rgba(240,240,255,255);
+}
 
 .upper-input {
   display: flex;
   flex-direction: row;
-  float: left;
+  align-items: center;
 }
 .downward-input {
   align-content: center;
@@ -64,8 +61,8 @@ form.\.register-form {
   width: -webkit-fill-available;
   float: left;
 }
-button.login-button.btn-11 {
-  width: inherit;
+button.login-button.btn-  11 {
+  width: 100%;
 }
 label {
   text-align: center;
@@ -242,4 +239,32 @@ label.register-label {
   .btn-7 span:hover:after {
     width: 100%;
   }
-  
+  .flex{
+    display: flex;
+  }
+  .flex-right{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .flex-left{
+    display: flex;
+    max-width: 50%;
+    flex-direction: column;
+    align-content: stretch;
+    justify-content: center;
+  }
+  .auth-form-container, .login-form {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    margin: left 20cm;
+  }
+  .right-upper{
+    padding: 4em;
+  }
+  .downward-input {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
