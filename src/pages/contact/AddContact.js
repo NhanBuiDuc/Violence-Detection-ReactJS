@@ -84,10 +84,12 @@ export function AddContact(props) {
         <div className="list">
           <Sidebar />
           <div className="listContainer">
+            <div className="addContact-header-container">
               <Header
                 title="Contacts"
                 subtitle="Managing Your Emergency Contacts"
               />
+            </div>
               <div className="addContact-flex">
                 {/* <Image src = {contact_background}/> */}
 

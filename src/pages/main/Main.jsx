@@ -5,8 +5,23 @@ import Widget from "../../components/widget/Widget";
 import Featured from "../../components/featured/Featured";
 import Chart from "../../components/chart/Chart";
 import Table from "../../components/table/Table";
+import CurrentUser from '../../model/CurrentUser'
+import { useState, useRef, useEffect } from "react";
 
 const Main = () => {
+  const [currentUser, setCurrentUser] = useState(new CurrentUser)
+  useEffect(() => {
+    try{
+      currentUser.parse()
+      console.log("current user", currentUser)
+      setCurrentUser(currentUser)
+    }
+    catch(err){
+
+    }
+
+  },[]);
+
   return (
     <div className="app dark">
       <div className="home">

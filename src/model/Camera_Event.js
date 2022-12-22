@@ -32,7 +32,7 @@ export default class Camera_Event {
     }
     static getCameraEventByWorkingId = async (working_camera_id) => {
         try{
-            let action = '/camera_event'
+            let action = '/camera_event/id'
             let myURL = baseURL + action
             let headers = new Headers();
             headers.append('Content-Type', 'application/json');

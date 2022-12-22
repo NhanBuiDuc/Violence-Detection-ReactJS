@@ -10,10 +10,9 @@ import { Register } from './pages/register/Register';
 import Streaming from './components/pages/Streaming';
 import ContactList from './pages/contact/Contact';
 import { AddContact } from './pages/contact/AddContact';
-import Log from './components/Log';
+import Log from './components/log/Log';
 import Demo from './components/CameraCard';
-import Asd from './components/test';
-import Main from "./pages/home/Main";
+import Main from "./pages/main/Main";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
@@ -40,7 +39,6 @@ function App() {
           <Route path='/addcontact' exact element={<AddContact/>} />
           <Route path='/log' exact element={<Log/>} />
           <Route path='/demo' exact element={<Demo/>}/>
-          <Route path='/test' exact element={<Asd/>}/>
           <Route path="/manage">
             <Route index element={<Main />} />
             {/* <Route path="login" element={<Login />} /> */}
