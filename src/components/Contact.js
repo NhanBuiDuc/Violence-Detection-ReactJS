@@ -7,7 +7,7 @@ import Contact from "../model/Contact";
 import { useEffect, useState } from "react";
 import { Button } from "./Button";
 import { useCallback } from "react";
-
+import Sidebar from "../components/sidebar/Sidebar"
 async function fetchdata (account_id){
     let data = await Contact.getByAcountId(account_id)
     return (
@@ -108,54 +108,60 @@ const onButtonEditClick = async (e, row) => {
 
 
   return (
-    <Box m="20px">
-      <Header title="TEAM" subtitle="Managing the Team Members" />
-      <Button
-            buttonStyle='btn--primary'
-            buttonSize='btn--medium'
-            link='/addcontact'
+    <div className="list">
+      <Sidebar/>
+      <div className="listContainer">
+        <Box m="20px">
+          <Header title="TEAM" subtitle="Managing the Team Members" />
+          <Button
+                buttonStyle='btn--primary'
+                buttonSize='btn--medium'
+                link='/addcontact'
+              >
+                  Add
+              </Button>
+          <Box
+            m="40px 0 0 0"
+            height="75vh"
+            sx={{
+              "& .MuiDataGrid-root": {
+                border: "none",
+              },
+              "& .MuiDataGrid-cell": {
+                borderBottom: "none",
+              },
+              "& .name-column--cell": {
+                color: colors.greenAccent[300],
+              },
+              "& .MuiDataGrid-columnHeaders": {
+                backgroundColor: colors.blueAccent[700],
+                borderBottom: "none",
+              },
+              "& .MuiDataGrid-virtualScroller": {
+                backgroundColor: colors.primary[400],
+              },
+              "& .MuiDataGrid-footerContainer": {
+                borderTop: "none",
+                backgroundColor: colors.blueAccent[700],
+              },
+              "& .MuiCheckbox-root": {
+                color: `${colors.greenAccent[200]} !important`,
+              },
+            }}
           >
-              Add
-          </Button>
-      <Box
-        m="40px 0 0 0"
-        height="75vh"
-        sx={{
-          "& .MuiDataGrid-root": {
-            border: "none",
-          },
-          "& .MuiDataGrid-cell": {
-            borderBottom: "none",
-          },
-          "& .name-column--cell": {
-            color: colors.greenAccent[300],
-          },
-          "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.blueAccent[700],
-            borderBottom: "none",
-          },
-          "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: colors.primary[400],
-          },
-          "& .MuiDataGrid-footerContainer": {
-            borderTop: "none",
-            backgroundColor: colors.blueAccent[700],
-          },
-          "& .MuiCheckbox-root": {
-            color: `${colors.greenAccent[200]} !important`,
-          },
-        }}
-      >
-        <DataGrid 
-        getRowId={(row: any) => row.contact_id} 
-        rows={data} 
-        columns={columns} 
-        experimentalFeatures={{ newEditingApi: true }}
-        onCellEditCommit={handleRowEditCommit}
-        />          
-      </Box>
-    </Box>
+            <DataGrid 
+            getRowId={(row: any) => row.contact_id} 
+            rows={data} 
+            columns={columns} 
+            experimentalFeatures={{ newEditingApi: true }}
+            onCellEditCommit={handleRowEditCommit}
+            />          
+          </Box>
+        </Box>
+      </div>
+    </div>
   );
+  
 };
 
 export default ContactList;

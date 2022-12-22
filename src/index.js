@@ -4,7 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
+import Admin from './Admin'
+
+
 const root = createRoot.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
     <App />

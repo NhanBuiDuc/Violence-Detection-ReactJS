@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Button } from './Button'
 import './Navbar.css'
-
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 function Navbar() {
     const[click, setClick] = useState(false)
     const[button, setButton] = useState(true)
@@ -59,29 +60,35 @@ return (
                             Services
                         </Link>
                     </li>
-                    {/* <li className='nav-item'>
-                        <Link to='/stream' className='App' onClick={closeMobileMenu}>
-                            Cameras
+                    { !email? 
+                        null    
+                        :
+                        <li className='nav-item'>
+                        <Link to='/manage' className='nav-links' onClick={closeMobileMenu}>
+                            <AccountCircleOutlinedIcon/>
                         </Link>
-                    </li> */}
-                    {/* <li className='nav-item'>
-                        <Link to='/stream' className='App' onClick={closeMobileMenu}>
-                            Cameras
+
+                        </li>
+
+                    }
+                    { !email? 
+                        <Button buttonStyle='btn--outline'link='/login'>LOG IN</Button>
+                        :
+                        <li className='nav-item'>
+                        <Link className='nav-links' onClick={logOut}>
+                            <LogoutOutlinedIcon >
+                                LOG OUT
+                            </LogoutOutlinedIcon>
                         </Link>
-                    </li> */}
-                    <li className='nav-item'>
-                        {sessionStorage.length === 0? <Link to='/login' className='nav-links-mobile' onClick={closeMobileMenu}>
-                            Login
-                        </Link>: <Link to='#' className='nav-links-mobile' >
-                            Logout
-                        </Link>}
-                    </li>
+
+                        </li>
+                    }
                 </ul>
                 {/* {!email? <button onClick={logOut}></button>:<Button buttonStyle='btn--outline'link='/contact'>Contact</Button> } */}
-                {!email? <Button buttonStyle='btn--outline'link='/login'>Contact</Button> : <Button buttonStyle='btn--outline' link='/contact'>Contact</Button>}
-                {!email? <Button buttonStyle='btn--outline'link='/login'>Profile</Button> : <Button buttonStyle='btn--outline'link='/profile'>Profile</Button>}
+                {/* {!email? null : <Button buttonStyle='btn--outline' link='/contact'>Contact</Button>}
+                {!email? null : <Button buttonStyle='btn--outline'link='/profile'>Profile</Button>}
                 {!email? <Button buttonStyle='btn--outline'link='/login'>LOG IN</Button> : <button onClick={logOut}>LOG OUT</button>}
-                {/* {!email? <button onClick={logOut}></button>:<Button buttonStyle='btn--outline'link='/profile'>Profile</Button> } */}
+                {!email? null :<Button buttonStyle='btn--outline'link='/profile'>Profile</Button> } */}
             </div> 
         </nav>
     </>

@@ -15,9 +15,17 @@ import { UserProfile } from './components/Profile';
 import Log from './components/Log';
 import Demo from './components/CameraCard';
 import Asd from './components/test';
-
+import Admin from './Admin'
+import Main from "./pages/home/Home";
+import List from "./pages/list/List";
+import Single from "./pages/single/Single";
+import New from "./pages/new/New";
+import { productInputs, userInputs } from "./formSource";
+import "./style/dark.scss";
+import { useContext } from "react";
+import { DarkModeContext } from "./context/darkModeContext";
 function App() {
-
+  const { darkMode } = useContext(DarkModeContext);
   return (
     <>
       <Router>
@@ -30,12 +38,32 @@ function App() {
           <Route path='/Services' exact element={<Services/>} />
           <Route path='/profile' exact element={<Profile/>} />
           <Route path='/stream' exact element={<Streaming/>} />
-          <Route path='/profile' exact element={<UserProfile/>} />
+          {/* <Route path='/profile' exact element={<UserProfile/>} /> */}
           <Route path='/contact' exact element={<ContactList/>} />
           <Route path='/addcontact' exact element={<AddContact/>} />
           <Route path='/log' exact element={<Log/>} />
           <Route path='/demo' exact element={<Demo/>}/>
           <Route path='/test' exact element={<Asd/>}/>
+          <Route path="/manage">
+            <Route index element={<Main />} />
+            {/* <Route path="login" element={<Login />} /> */}
+            <Route path="users">
+              <Route index element={<ContactList />} />
+              <Route path=":userId" element={<Single />} />
+              <Route
+                path="new"
+                element={<New inputs={userInputs} title="Add New User" />}
+              />
+            </Route>
+            <Route path="products">
+              <Route index element={<List />} />
+              <Route path=":productId" element={<Single />} />
+              <Route
+                path="new"
+                element={<New inputs={productInputs} title="Add New Product" />}
+              />
+            </Route>
+          </Route>
         </Routes>
       </Router>
 
