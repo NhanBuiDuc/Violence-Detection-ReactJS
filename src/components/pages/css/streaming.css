@@ -1,19 +1,30 @@
 .App {
-    text-align: center;
+    text-align: center; 
+    margin:auto;
+    padding: center;
   }
   
-  .App-logo {
-    height: 40vmin;
+  .App-logo , .App-logo2{
+    text-align: center;
+    margin: auto;
+    height: fit-content;
+    width: fit-content;
   }
   
   .App-header {
+   
+    margin-top: 50rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
     background-color: #282c34;
-    min-height: 100vh;
+    min-height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
+    font-size: auto;
     color: white;
   }
   
