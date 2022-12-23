@@ -1,22 +1,19 @@
 import React from 'react';
-import Navbar from './components/Navbar';
 import './App.css';
 import Home from './components/pages/Home';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './components/pages/Login';
+import Login from './pages/login/Login';
 import Cameras from './components/pages/Cameras';
 import Services from './components/pages/Services';
 import Profile from './components/pages/Profile';
-import { Register } from './components/pages/Register';
+import { Register } from './pages/register/Register';
 import Streaming from './components/pages/Streaming';
-import ContactList from './components/Contact';
-import { AddContact } from './components/AddContact';
-import { UserProfile } from './components/Profile';
+import ContactList from './pages/contact/Contact';
+import { AddContact } from './pages/contact/AddContact';
 import Log from './components/Log';
 import Demo from './components/CameraCard';
 import Asd from './components/test';
-import Admin from './Admin'
-import Main from "./pages/home/Home";
+import Main from "./pages/home/Main";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
@@ -29,7 +26,7 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           <Route path='/' exact element={<Home/>} />
           <Route path='/Login' exact element={<Login/>} />
@@ -56,7 +53,7 @@ function App() {
               />
             </Route>
             <Route path="products">
-              <Route index element={<List />} />
+              <Route index element={<List/>} />
               <Route path=":productId" element={<Single />} />
               <Route
                 path="new"

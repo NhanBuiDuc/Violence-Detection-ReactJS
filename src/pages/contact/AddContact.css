@@ -1,0 +1,75 @@
+.profile-page > h1{
+    margin-top: 1cm;
+  }
+  
+  .profile-container {
+    margin-bottom: 15cm;
+    margin-top: 1cm;
+    margin-left: 10cm;
+    margin-right: 10cm;
+  }
+  /* .profile-cover-img {
+    height: 320px;
+    position: relative;
+  }
+  
+  .profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 300px;
+    border: 3px solid white;
+  } */
+  
+  .profile-card {
+    width: 300px;
+    height: 480px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 1px 10px 1px black;
+  }
+  
+  .upper-container {
+    height: 100px;
+    background: linear-gradient(to left, #2d00f7, #ff0291);
+  }
+  
+  .profile-img img {
+    background: white;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    padding: 5px;
+    transform: translate(95px,45px);
+  }
+  
+  .lower-container {
+    margin-top: 60px;
+    height: 300px;
+    background: white;
+    text-align: center;
+  }
+  
+  .lower-container h3 {
+    margin-bottom: 0.5cm;
+    padding: 0;
+  }
+  .addContact input{
+    background-color: antiquewhite;
+  }
+  
+  .addContact-flex {
+    display: flex;
+    border-style: dotted;
+    background: aliceblue;
+    border: black;
+  }
+  .addContact-form {
+      margin: 5rem;
+      /* background-image: url("https://amymhaddad.s3.amazonaws.com/morocco-blue.png") */
+  }

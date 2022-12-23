@@ -1,15 +1,16 @@
 import { Box, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import { tokens } from "./theme";
-import Header from "./Header.jsx";
-import CurrentUser from '../model/CurrentUser'
-import Contact from "../model/Contact";
+import { tokens } from "../../components/theme";
+import Header from "../../components/Header.jsx";
+import CurrentUser from '../../model/CurrentUser'
+import Contact from "../../model/Contact";
 import { useEffect, useState } from "react";
 import { useCallback } from "react";
-import Sidebar from "../components/sidebar/Sidebar"
+import Sidebar from "../../components/sidebar/Sidebar"
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import Button from '@mui/material/Button';
-
+import { Link } from 'react-router-dom'
+import "./Contact.css"
 async function fetchdata (account_id){
     let data = await Contact.getByAcountId(account_id)
     return (
@@ -115,14 +116,12 @@ const onButtonEditClick = async (e, row) => {
         <Sidebar/>
         <div className="listContainer">
           <Box m="20px">
-            <Header title="TEAM" subtitle="Managing the Team Members" />
-            <Button   buttonStyle='btn--primary'
-                      buttonSize='btn--medium'
-                      link='/addcontact'
-            >
-              <PersonAddAlt1Icon/>
-              NEW
+            <Header title="Contacts" subtitle="Managing Your Emergency Contacts" />
+            <Button component={Link} to="/addcontact" color="success" size="large">
+                <PersonAddAlt1Icon/>
+                NEW
             </Button>
+
             <Box
               m="40px 0 0 0"
               height="75vh"
