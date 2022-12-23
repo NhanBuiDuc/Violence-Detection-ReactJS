@@ -41,7 +41,7 @@ function ServicesBundle() {
   },[]);
   
   const handleLogin = (e) => {
-    navigate('/login')
+    navigate('/Login')
   }
   console.log(services)
   return (
@@ -135,8 +135,10 @@ function ServicesBundle() {
           </ul>
         </article>
         {!currentUser.loggedIn?
-          <div className='purchase-btns1' >
-            <Button onClick={handleLogin}>GETTING START BY LOG IN</Button>
+          <div className='purchase-btns4' >
+
+            <Button className='click' link="/login">GETTING START BY LOG IN</Button>
+          
           </div>
         : 
         <>

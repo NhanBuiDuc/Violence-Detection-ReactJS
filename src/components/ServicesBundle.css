@@ -72,6 +72,7 @@
     background: rgb(199, 196, 196);
     padding: 40px 60px 40px;
     transform: translateY(-40px);
+    border-radius: 5%;
 }
 
 .service::before {
@@ -86,6 +87,7 @@
     transform-origin: top;
     transition: transform 0.5s;
 }
+
 
 
 
@@ -115,4 +117,18 @@
 
 .purchase-btns3 {
     margin-right: 3.5rem;
+}
+
+.purchase-btns4 {
+    display: flex;
+   
+    color: black;
+    margin:auto   
+}
+
+button.btn.btn--primary.btn--medium {
+    background: rgb(243, 243, 243);
+}
+button.btn.btn--primary.btn--medium:hover{
+    background: rgb(179, 179, 179);
 }
