@@ -121,4 +121,24 @@ export default class Account {
             });
         return response
     }
+    static getCamerasAndServicesByAccountId = async (account_id) => {
+        let action = '/users/camerasAndServices'
+        let myURL = baseURL + action
+
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        const requestBody = {account_id}
+        let response = await fetch(myURL, {
+                mode:'cors',
+                method: 'POST',
+                headers: headers,
+                body: JSON.stringify(requestBody)
+            }).then(function(response){
+                return response.json();
+            }).then(function(myJson) {
+                return myJson
+            });
+        return response
+    }
 }

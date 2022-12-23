@@ -13,13 +13,14 @@ import { AddContact } from './pages/contact/AddContact';
 import Log from './components/log/Log';
 import Demo from './components/CameraCard';
 import Main from "./pages/main/Main";
-import List from "./pages/list/List";
+import List from "./pages/camera-service-list/camera-service-list";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
-import { productInputs, userInputs } from "./formSource";
+import { productInputs, userInputs } from "./datatablesource/formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
+import CameraServiceList from "./pages/camera-service-list/camera-service-list"
 function App() {
   const { darkMode } = useContext(DarkModeContext);
   return (
@@ -58,8 +59,8 @@ function App() {
                 element={<New inputs={productInputs} title="Add New Product" />}
               />
             </Route>
-            <Route path="cameras">
-              <Route index element = {<Streaming/>} />
+            <Route path="security">
+              <Route index element = {<CameraServiceList/>} />
               
             </Route>
           </Route>

@@ -18,10 +18,10 @@ function Log(props) {
   const [rate, setRate] = useState(0);
   const [start, setStart] = useState(0);
 
-  const setMessages = async (xd) =>{
+  const setMessages = async (xd_array) =>{
     let message_array = []
-    xd.forEach(element => {
-      var dt = new Date(element.start)
+    xd_array.forEach(element => {
+      var dt = new Date(element.start).toDateString()
         let msg = element.name + " at: " + dt + 
         " with possibility of: " + element.rate + " at location: " + element.location +
         " with camera_id: " + element.working_camera_id 

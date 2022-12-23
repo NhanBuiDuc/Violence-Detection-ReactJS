@@ -6,7 +6,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
-
+import CameraIndoorIcon from '@mui/icons-material/CameraIndoor';
 const Sidebar = () => {
   
   const { dispatch } = useContext(DarkModeContext);
@@ -33,6 +33,12 @@ const Sidebar = () => {
             </li>
           </Link>
           <p className="title">SERVICES</p>
+          <Link to="/manage/security" style={{ textDecoration: "none" }}>
+            <li>
+              <CameraIndoorIcon className="icon" />
+              <span>Security</span>
+            </li>
+          </Link>
           <p className="title">PERSONAL</p>
           <li>
             <AccountCircleOutlinedIcon className="icon" />
@@ -72,10 +78,7 @@ const Sidebar = () => {
             <SettingsSystemDaydreamOutlinedIcon className="icon" />
             <span>System Health</span>
           </li>
-          <li>
-            <PsychologyOutlinedIcon className="icon" />
-            <span>Logs</span>
-          </li>
+
           <li>
             <SettingsApplicationsIcon className="icon" />
             <span>Settings</span>
