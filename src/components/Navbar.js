@@ -59,12 +59,18 @@ return (
                             Services
                         </Link>
                     </li>
+                
                     { !email? 
                         null    
                         :
                         <li className='nav-item'>
                         <Link to='/manage' className='nav-links' onClick={closeMobileMenu}>
                             <AccountCircleOutlinedIcon/>
+                            <li className='nav-item'>
+                                <Link to='manage/profile' className='nav-profile' onClick={closeMobileMenu}>
+                                   <p> Profile</p>
+                                </Link>
+                                </li>
                         </Link>
 
                         </li>
@@ -75,9 +81,15 @@ return (
                         :
                         <li className='nav-item'>
                         <Link className='nav-links' onClick={logOut}>
+
                             <LogoutOutlinedIcon >
-                                LOG OUT
+                                
                             </LogoutOutlinedIcon>
+                            <li className='nav-item'>
+                                <Link to='manage/profile' className='nav-profile' onClick={closeMobileMenu}>
+                                   <p> Logout</p>
+                                </Link>
+                                </li>
                         </Link>
 
                         </li>
