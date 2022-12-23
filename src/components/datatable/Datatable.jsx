@@ -4,8 +4,9 @@ import { userColumns, userRows } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const Datatable = () => {
+const Datatable = (props) => {
   const [data, setData] = useState(userRows);
+  const [isAddNew, setIsAddNew] = useState(props.isAddNew)
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
@@ -19,9 +20,12 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
-            </Link>
+            <>
+              <Link to="/users/test" style={{ textDecoration: "none" }}>
+                <div className="viewButton">View</div>
+              </Link>
+            </>
+
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row.id)}

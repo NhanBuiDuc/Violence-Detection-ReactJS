@@ -10,7 +10,7 @@ const start = () => {
   return response;
 };
 
-function Log() {
+function Log(props) {
   const [xd, setXD] = useState("");
   const [message, setMessage] = useState([]);
   const [count, setCount] = useState(0);
@@ -30,9 +30,9 @@ function Log() {
     setMessage(message_array)
   }
   const fetchData = async () => {
-    let response = await Camera_Event.getCameraEventByWorkingId(
-      "822224633106104321"
-    ).then( (response) => {
+    // let response = await Camera_Event.getCameraEventByWorkingId(
+    //   "822224633106104321"
+    let response = await Camera_Event.getCameraEventByWorkingId(props.working_camera_id).then( (response) => {
       console.log("Response", response);
 
       if (response != null || response != undefined) {
