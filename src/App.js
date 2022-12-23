@@ -7,7 +7,7 @@ import Cameras from './components/pages/Cameras';
 import Services from './components/pages/Services';
 import Profile from './components/pages/Profile';
 import { Register } from './pages/register/Register';
-import Streaming from './components/pages/Streaming';
+import Streaming from './pages/streaming/streaming';
 import ContactList from './pages/contact/Contact';
 import { AddContact } from './pages/contact/AddContact';
 import Log from './components/log/Log';
@@ -57,6 +57,10 @@ function App() {
                 path="new"
                 element={<New inputs={productInputs} title="Add New Product" />}
               />
+            </Route>
+            <Route path="cameras">
+              <Route index element = {<Streaming/>} />
+              
             </Route>
           </Route>
         </Routes>
