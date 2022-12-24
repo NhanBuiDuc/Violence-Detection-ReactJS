@@ -78,7 +78,12 @@ export const cameraListActionColumns = [
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
+            <Link to={
+                {
+                  pathname: "/manage/stream/"+ params.row.working_camera_id, 
+                }
+              } 
+              style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
             {/* <div

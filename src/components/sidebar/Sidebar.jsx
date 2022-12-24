@@ -44,7 +44,7 @@ const Sidebar = () => {
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
           </li>
-          <Link to="/manage/users" style={{ textDecoration: "none" }}>
+          <Link to="/manage/contacts" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
               <span>Contacts</span>

@@ -18,7 +18,6 @@ const CameraListDataTable = (props) => {
         {
           isAddNew?
           <>
-
             <Link to="/users/new" className="link">
               Add New
             </Link>

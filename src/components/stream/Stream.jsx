@@ -2,6 +2,8 @@ import React from 'react';
 import './stream.css'
 import { useEffect, useState } from "react";
 import noSignal from "../../images/no-signals.gif"
+
+
 function Stream() {
     const [imgSrc, setImgSrc] = useState('/video_feed');
 

@@ -1,0 +1,25 @@
+.streaming-datatableTitle {
+    width: 100%;
+    font-size: 24px;
+    color: gray;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.streaming-content {
+    display: flex;
+}
+.stream-content-video {
+    margin-top: 4rem;
+    margin-left: 2rem;
+}
+.streaming-content-log {
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.img.App-logo {
+    width: 30rem;
+}
