@@ -51,10 +51,14 @@ function ServicesBundle() {
         <h1> SERVICES </h1>
         <h2> New technology, new cameras. As the violence continue to rise, have your protection right now. </h2>
       </div> */}
+    <h3 className='pre-text'>LET'S CONSIDER YOUR SERVICE!</h3>
       <div className='services-list'>
-        <article className='service'>
+      
+        <article className='service-pre'>
           <div className='service-head'>
-            <h3> {services && services[0].name}
+            <h3>
+               {/* {services && services[0].name} */}
+               Premium 
             </h3>
           </div>
           <ul className='service-info'>
@@ -80,9 +84,13 @@ function ServicesBundle() {
             </li>
           </ul>
         </article>
-        <article className='service'>
+
+        <article className='service-basic'>
           <div className='service-head'>
-            <h3>{services && services[1].name} </h3>
+          <h3>
+               {/* {services && services[0].name} */}
+                Basic
+            </h3>
           </div>
           <ul className='service-info'>
             <li>
@@ -107,9 +115,12 @@ function ServicesBundle() {
             </li>
           </ul>
         </article>
-        <article className='service'>
+        <article className='service-enter'>
           <div className='service-head'>
-            <h3> {services && services[2].name} </h3>
+          <h3>
+               {/* {services && services[0].name} */}
+               EnterPrise
+            </h3>
           </div>
           <ul className='service-info'>
             <li>
