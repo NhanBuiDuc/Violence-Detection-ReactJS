@@ -57,7 +57,7 @@ function ServicesBundle() {
         <article className='service-pre'>
           <div className='service-head'>
             <h3>
-               {/* {services && services[0].name} */}
+               {services && services[0].name}
                Premium 
             </h3>
           </div>
@@ -88,7 +88,7 @@ function ServicesBundle() {
         <article className='service-basic'>
           <div className='service-head'>
           <h3>
-               {/* {services && services[0].name} */}
+               {services && services[0].name}
                 Basic
             </h3>
           </div>
@@ -118,7 +118,7 @@ function ServicesBundle() {
         <article className='service-enter'>
           <div className='service-head'>
           <h3>
-               {/* {services && services[0].name} */}
+               {services && services[0].name}
                EnterPrise
             </h3>
           </div>
